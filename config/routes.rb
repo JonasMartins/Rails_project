@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'page/home'
+  #get 'page/home'
 
   resources :widgets
 
