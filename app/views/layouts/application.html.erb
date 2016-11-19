@@ -18,6 +18,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="navbar navbar-fixedtop navbar-default">
+    <div class="container">
+      <%= link_to  "myRecepies", "#", class: "btn btn-lg btn-success", id: "logo" %>
+      <div class="nav_item">
+        <%= link_to  "link_1", "#", class: "btn btn-default btn-warning" %>
+      </div>
+      <div class="nav_item">
+        <%= link_to  "link_1", "#", class: "btn btn-default btn-warning" %>
+      </div>
+      <div class="nav_item">
+        <%= link_to  "link_1", "#", class: "btn btn-default btn-warning" %>
+      </div>
+    </div>
+  </header>
+
+<!--
+  Ruby Default Code
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
   <div class="container">
     <ul class="nav navbar-nav">
@@ -51,7 +68,7 @@
     </ul>
   </div>
 </nav>
-
+ -->
 <%= yield %><!-- A lot of difference -->
 
 </body>
