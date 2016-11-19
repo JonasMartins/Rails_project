@@ -1,8 +1,10 @@
 $brand-primary: #532F8C;
 $brand-language: #B01302;
+$brown: #312312;
+$dark-orange: #FF8C00;
 
 .jumbotron {
-  background: $brand-primary;
+  background: $dark-orange;
   color: white;
   padding-bottom: 80px;
 
@@ -22,6 +24,7 @@ $brand-language: #B01302;
 
   .navbar + & {
     margin-top: -20px;
+    margin-bottom: 0px; /* igualando Jumbotron*/
   }
 
   .lang-logo {
