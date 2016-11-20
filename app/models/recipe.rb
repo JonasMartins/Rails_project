@@ -25,6 +25,13 @@ class Recipe < ActiveRecord::Base
 	 */
 =end
 
+# => Obs para isso, muitos pertencem a 1, logo
+# => chef deve ser no singular
+# => Obs: Video 26 mostra dicas no rails console 
+# => para adicionar métodos interessantes após
+# => a criação das relações, importante ver.
+belongs_to :chef
+
 # validations
 validates :name, presence: true, length: {minumum: 5, maximum: 100}
 validates :summary presence: true, length: {minumum: 10
