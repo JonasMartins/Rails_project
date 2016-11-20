@@ -44,5 +44,4 @@ gem 'puma'
 
 # Bootstrap -> locally
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'sass-rails', '~> 5.0.3'
 gem 'autoprefixer-rails'
