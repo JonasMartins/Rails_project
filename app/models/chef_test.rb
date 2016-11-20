@@ -1,3 +1,4 @@
+=begin
 require "test_helper"
 
 class ChefTest < ActiveSupport::TestCase
@@ -63,3 +64,4 @@ class ChefTest < ActiveSupport::TestCase
 
 
 end	
+=end

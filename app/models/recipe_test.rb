@@ -1,4 +1,11 @@
+=begin
 require "test_helper"
+
+Esse arquivo estava causando o erro
+para maiores informações basta : heroku logs
+diagnostico: heroku ps:scale web=1
+depois: heroku ps
+para mostrar as informações 
 
 class RecipeTest < ActiveSupport::TestCase
 
@@ -57,3 +64,5 @@ class RecipeTest < ActiveSupport::TestCase
 
 
 end	
+
+=end
