@@ -1,5 +1,7 @@
 class Chef < ActiveRecord::Base
 
+	#### TENTANDO:heroku run rake db:migrate
+
 	# antes de salvar, já adiciona a função
 	# downcase na entrada
 	
