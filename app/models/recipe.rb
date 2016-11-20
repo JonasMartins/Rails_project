@@ -32,6 +32,8 @@ class Recipe < ActiveRecord::Base
 # => a criação das relações, importante ver.
 belongs_to :chef
 
+#Adicionar Origin? 
+
 # validations
 validates :name, presence: true, length: {minumum: 5, maximum: 100}
 validates :summary presence: true, length: {minumum: 10
