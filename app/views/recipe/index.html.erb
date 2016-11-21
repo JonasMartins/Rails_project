@@ -1,5 +1,5 @@
 <h1>All Recipes</h1>
-
+<!-- List all the recipes -->
 <% @recipes.each do |recipe| %>
 	<div class="row">
 		<div class="col col-md-2">
@@ -9,7 +9,19 @@
 		</div>
 		<!-- Recipe content -->
 		<div class="col col-lg-8 well">	
-			sss
+			<h4><%= link_to recipe.name, "#" %></h4>
+			<p>
+				<%= recipe.summary %>
+			</p>
+			<p>
+				<span class="quiet">
+					<small>
+					<!-- Ótima função que mostra o tempo 
+					de forma amigável  -->
+					<%=	time_ago_in_words(recipe.created_at)%> ago.
+					</small>
+				</span>
+			</p>
 		</div>
 
 	</div>		
