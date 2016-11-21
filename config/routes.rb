@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'recipe/index'
+
   #get 'page/home'
 
   resources :widgets
@@ -12,6 +14,23 @@ Rails.application.routes.draw do
 
   # controller pages action home
   get '/welcome', to:'welcome#index'
+
+  # show all recipes 
+  # get '/recipes', to: 'recipes#index'
+  # get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
+  # post '/recipes', to: 'recipes#create'
+  # get 'recipes/:id/edit', to: 'recipes#edit', as: 'edit_recipe'
+  # # handle the submission of template, put/patch
+  # patch 'recipes/:id', to: 'recipes#update'
+  # # show recipes as individual recipes
+  # get 'recipes/:id', to: 'recipes#show', as: 'recipe'
+  # delete 'recipes/:id', to: 'recipes#destroy'
+
+  # Tudo isso pode ser substituido por:
+  resources :recipes
+  # o rails faz tudo de forma automatica todas
+  # essas funções básicas
+
 
   #
   # Example of regular route:

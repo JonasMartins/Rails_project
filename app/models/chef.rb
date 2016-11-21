@@ -12,7 +12,6 @@ class Chef < ActiveRecord::Base
 
 	before_save { self.email = email.downcase }
 
-	validates :chef_id , presence: true	
 	validates :chefname, presence: true, length:
 	 {minumum: 3, maximum: 40}
 	#found at: http://emailregex.com/
