@@ -1,0 +1,15 @@
+
+############################# HEROKU POSTGRES
+
+Obs: Ao usar "heroku rake db:migrate", todas as tabelas são criadas normalmente
+porem ainda não consegui uma forma de escrever um seed.rb que assim
+ao executar "heroku rake db:seed" possa também passar as tupla criadas localmente
+para o banco remoto do heroku.
+
+Obs; Posso acessar o banco do heroku normalmente com "heroko pg:psql" e visualizar todas as tabelas "\dt"
+bem como seu conteúdos
+
+Esse comando fáz o papel do seed, mas para isso devo resetar o meu banco remoto chamado "DATABASE_URL"
+o que não é aconselhável ao menos que queira se cria-lo apenas uma veze pronto.
+
+heroku pg:push ruby-getting-started_development DATABASE_URL --app secret-anchorage-33873
