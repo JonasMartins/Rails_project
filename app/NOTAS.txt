@@ -13,3 +13,23 @@ Esse comando fáz o papel do seed, mas para isso devo resetar o meu banco remoto
 o que não é aconselhável ao menos que queira se cria-lo apenas uma veze pronto.
 
 heroku pg:push ruby-getting-started_development DATABASE_URL --app secret-anchorage-33873
+
+
+OBS: Mais eficiente por enquanto: 
+"heroku run rails console"
+e adiciona as tuplas de forma igual as adicionadas
+localmento pelo tradicional rails c
+
+criando rapidamente:
+
+#chefs
+
+c = Chef.create(chefname: "Raul Creed", email: "raulcreed@email.com")
+
+d = Chef.create(chefname: "Real Mayer", email: "real_mayer@email.com")
+
+#recipes
+
+r = Recipe.create(name: "Vegetable saute", summary: "Best dish Ever", description: "Add vegetables, add oil, coock for 20 minutes", chef_id: 1)
+
+s = Recipe.create(name: "Potato Salad", summary: "Best potato Salad Ever", description: "Add mayo, add potatos, add some onions", chef_id: 2)
