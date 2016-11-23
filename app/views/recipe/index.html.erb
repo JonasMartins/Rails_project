@@ -1,10 +1,12 @@
 <h1>All Recipes</h1>
 <!-- List all the recipes -->
+<hr/>
 <% @recipes.each do |recipe| %>
 	<div class="row">
-		<div class="col col-md-2">
+		<div class="col col-md-2 col-sm-2">
 			<section class="chef_info center">
-				
+				<%=  gravatar_for recipe.chef, size: 100 %>
+				<h5> Chef name: <%= recipe.chef.chefname  %></h5>					
 			</section>
 		</div>
 		<!-- Recipe content -->
@@ -23,6 +25,6 @@
 				</span>
 			</p>
 		</div>
-
-	</div>		
+	</div>	
+	<hr/>	
 <% end %>	
