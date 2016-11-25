@@ -40,7 +40,7 @@ class RecipeController < ApplicationController
     else
       render :new
     end
-  end
+  end 
 
   # só assim para possibilitar a criação
   # de um novo objeto

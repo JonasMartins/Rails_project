@@ -1,9 +1,15 @@
-$navbar-default-bg: #312312;
-$light-orange: #ff8c00;
-$navbar-default-color: light-orange;
+$navbar-default-bg: #CD3700; 
+$gray71: #9C9C9C;
+/* $navbar-default-color: $gray71; */
+$orange-red3: #CD3700;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+* { /* Everything now is harp, I mean, everything */
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+}
 
 #logo{
 	margin-top: 10px;
@@ -23,14 +29,17 @@ $navbar-default-color: light-orange;
 }
 
 .navbar{
-  margin-bottom: 0px; /* igualando Jumbotron*/
+  margin-bottom: -1px; /* igualando Jumbotron*/
+  border-color: $orange-red3;
 }
 
+/* 
 .nav_item {
 	margin-left: 25px;
 	float: left;
 	margin-top: 20px;
 }
+*/
 .center {
 	text-align: center;
 }
@@ -52,6 +61,9 @@ h2{
 	color: #777; 
 }
 
+.jumbotron>h2{
+	color: white;
+}
 .left {
 	text-align: left;
 	letter-spacing: .5px;
@@ -61,7 +73,28 @@ h2{
 	margin-top: 25px;
 	border-top: 1px solid black; 
 }
-
+.btn-warning {/* preguiça... */
+	background: $orange-red3;
+	border-color: $orange-red3;
+	&:hover{
+		background: darken($orange-red3, 15%);
+		border-color: darken($orange-red3, 15%);
+	} 	
+}
+.container >.navbar-header > a {
+	color: white;
+	&:hover{
+		color: black;
+		font-style: bold;
+	}
+}
+.navbar-default .navbar-nav > li > a {
+	color: white;
+	&:hover{
+		color: black;
+		font-style: bold;
+	} 
+}
 /*
 body {
 	padding-top: 80px; -- Descendo o body 

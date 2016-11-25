@@ -2,17 +2,24 @@ $brand-primary: #532F8C;
 $brand-language: #B01302;
 $brown: #312312;
 $dark-orange: #FF8C00;
+$orange-red3: #CD3700;
+$yellow2: #EEEE00;
+$forest-green: #228B22;
 
 .jumbotron {
-  background: $dark-orange;
+  background: $orange-red3;
   color: white;
   padding-bottom: 80px;
 
+
   .btn-primary {
-    background: lighten($brand-primary, 20%);
-    border-color: lighten($brand-primary, 20%);
+    background: lighten($forest-green, 10%);
+    border-color: lighten($forest-green, 10%);
     &:hover {
-      background: lighten($brand-primary, 15%);
+      background: $forest-green;
+      border-color: $forest-green;
+      /* Deixando mais claro:  */
+      /* background: lighten($forest-green, 15%); */
     }
   }
 
