@@ -29,7 +29,23 @@ class RecipeController < ApplicationController
   # procura pela função create para salvar 
   # o objeto criado
   def create
+    # strong params
+    @recipe = Recipe.new(recipe_params)
+    @recipe.chef = Chef.find(2)
 
+    if @recipe.save
+      # flash uma especie de notificação
+      flash[:success] = "Your Recipe was created Succesfully!"
+      redirect_to recipe_index_path
+    else
+      render :new
+    end
   end
 
+  # só assim para possibilitar a criação
+  # de um novo objeto
+  private
+    def recipe_params
+      params.require(:recipe).permit(:name,:summary,:description)
+    end
 end
