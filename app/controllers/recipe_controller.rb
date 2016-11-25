@@ -19,4 +19,17 @@ class RecipeController < ApplicationController
   	@recipe = Recipe.find(params[:id])
 
   end
+
+  def new 
+    @recipe = Recipe.new 
+    
+  end 
+
+  # após o form do new ser efetivado o rails
+  # procura pela função create para salvar 
+  # o objeto criado
+  def create
+
+  end
+
 end
