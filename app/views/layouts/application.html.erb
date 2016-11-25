@@ -19,10 +19,32 @@
 
   <%= csrf_meta_tags %>
 </head>
+   <!--
+  <div class="container">
+     -->
+  <!-- Motrar as menssagens do flash
+  logo abaixo do barra de navegação  -->
+ 
+
+  <!-- 
+   -->
+
+
 <body>
 
-<%= render "layouts/header" %>
-<%= render "layouts/footer" %>
+  <%= render "layouts/header" %>
+
+   <div class="container">
+    
+    <%= render "layouts/messages"%>
+    
+    <%= yield %><!-- A lot of difference -->
+  
+ 
+  <%= render "layouts/footer" %>
+      
+</div>
+
 <!--
   Ruby Default Code
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">

@@ -2,17 +2,31 @@
 	<h1>Create a new Recipe</h1>
 	<hr/>
 </p>
+<!-- Erros associados com a criação dos
+recipes  -->
+<% if @recipe.errors.any? %>
+	<div class="row">
+		<div class="alert alert-danger col-md-8 col-md-offset-2">
+			<h5>Please correct the following errors:</h5>
+			<ul>
+				<% @recipe.errors.full_messages.each do |msg| %>
+					<li> <%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>
 <div class="row">
 	<div class="well col-md-8 col-md-offset-2">
 		<!-- Atenção na form -->
 		<%= form_for @recipe , url: {action: "create"} do |f| %>
-			<%= f.label :name %>:
+			<%= f.label :name %>
 			<%= f.text_field :name %>
 			
-			<%= f.label :summary %>:
+			<%= f.label :summary %>
 			<%= f.text_field :summary %>
 
-			<%= f.label :description %>:
+			<%= f.label :description %>
 			<!-- rows 10 maior tamanho do textarea -->
 			<%= f.text_area :description, rows: 10%>
 
