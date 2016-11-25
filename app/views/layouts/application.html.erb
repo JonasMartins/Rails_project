@@ -20,21 +20,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header class="navbar navbar-fixedtop navbar-default">
-    <div class="container">
-      <%= link_to  "myRecepies", "#", class: "btn btn-lg btn-success", id: "logo" %>
-      <div class="nav_item">
-        <%= link_to  "link_1", "#", class: "btn btn-default btn-warning" %>
-      </div>
-      <div class="nav_item">
-        <%= link_to  "link_1", "#", class: "btn btn-default btn-warning" %>
-      </div>
-      <div class="nav_item">
-        <%= link_to  "link_1", "#", class: "btn btn-default btn-warning" %>
-      </div>
-    </div>
-  </header>
 
+<%= render "layouts/header" %>
+<%= render "layouts/footer" %>
 <!--
   Ruby Default Code
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
@@ -73,12 +61,7 @@
  -->
  <!-- Colocando todo dentro do caontainer de uma
  vez só  -->
- <div class="container">
-  <%= yield %><!-- A lot of difference -->
-  <div class="footer">
-    <p>&copy; MyRecipes 2015</p>
-  </div>
 
-</div>
+
 </body>
 </html>

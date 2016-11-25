@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # delete 'recipes/:id', to: 'recipes#destroy'
 
   # Tudo isso pode ser substituido por:
-  resources :recipes
+  resources :recipe
   # o rails faz tudo de forma automatica todas
   # essas funções básicas
 

@@ -11,7 +11,14 @@
 		</div>
 		<!-- Recipe content -->
 		<div class="col col-lg-8 well">	
-			<h4><%= link_to recipe.name, "#" %></h4>
+			<!-- recipe_path é mais uma boa convenção do
+			rails para evitar de se criar toda a string
+			com o caminho, adicionando assim
+			ao se ultilizar o loop que passa por cada recipe
+			object vemos que o link para esse objeto já está pre
+			parado ao passar o ponteiro do mouse sobre o link
+			 -->
+			<h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
 			<p>
 				<%= recipe.summary %>
 			</p>
