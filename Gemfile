@@ -47,3 +47,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
 gem 'pry'
+
+# upload de arquivos
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+
+gem 'mini_magick'
