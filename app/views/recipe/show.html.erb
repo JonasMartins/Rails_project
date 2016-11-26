@@ -15,13 +15,22 @@
 				<p>
 					<strong>Steps:</strong>
 				</p>
-				<%= @recipe.description %>
+				<!-- Para deixar o texto da mesma forma
+				com foi digitado, com os enters e tudo mais -->
+				<%= simple_format(@recipe.description) %>
 			</div>
 		</div>
+		<section class="col-md-8">
+			<div class="btn-toolbar" role="toolbar"
+			aria-label="...">
+  		<div class="btn-group" role="group" 
+  		aria-label="...">  
+      <%= link_to 'Return to all recipes', recipe_index_path , class: "btn btn-default btn-space" %>
+      <%= link_to 'Edit this Recipe', edit_recipe_path(@recipe) , class: "btn btn-default btn-space" %>
+		  </div>
+		</div>
+		</section>
+			
 	</div>
-<!-- 
-<%= button_to "Show all", recipe_path , :class =>"btn btn-default",
-:method => "get"  %>
- -->
 
- <%= link_to 'Return to all recipes', recipe_index_path , class: "btn btn-default" %>	
+ 

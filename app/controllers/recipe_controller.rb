@@ -42,6 +42,28 @@ class RecipeController < ApplicationController
     end
   end 
 
+  def edit
+    # find the recipe to edit
+    @recipe = Recipe.find(params[:id])
+
+
+  end
+
+  def update
+    # find the recipe to save
+    @recipe = Recipe.find(params[:id])
+    
+    if @recipe.update(recipe_params)
+      flash[:success] = "Your Recipe was updated Succesfully!"
+      #back to recipe that just have been updated
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
+    end
+  end
+
+
+
   # só assim para possibilitar a criação
   # de um novo objeto
   private

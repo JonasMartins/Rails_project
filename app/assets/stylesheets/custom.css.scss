@@ -124,7 +124,13 @@ input, textarea, select, .uneditable-input {
 	height: auto !important;
 }
 
+.btn-space {
+  margin-right: 10px; // Espaço entre botões, ao usar btn-group
+}
 
+.btn-space-top {
+  margin-top: 10px; // Espaço entre botões, ao usar btn-group
+}
 
 
 
