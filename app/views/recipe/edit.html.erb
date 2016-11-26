@@ -1,21 +1,8 @@
-<p>
-	<h1>Edit Recipe</h1>
-	<hr/>
-</p>
-<!-- Erros associados com a criação dos
-recipes  -->
-<% if @recipe.errors.any? %>
-	<div class="row">
-		<div class="alert alert-danger col-md-8 col-md-offset-2">
-			<h5>Please correct the following errors:</h5>
-			<ul>
-				<% @recipe.errors.full_messages.each do |msg| %>
-					<li> <%= msg %></li>
-				<% end %>
-			</ul>
-		</div>
-	</div>
-<% end %>
+<%= render 'shared/page_title', title: "Edit Recipe" %>
+<!-- Passando o objeto como argumento para
+o partial -->
+<%= render 'shared/errors', obj: @recipe %>
+
 <div class="row">
 	<div class="well col-md-8 col-md-offset-2">
 		<!-- Atenção na form para update -->
