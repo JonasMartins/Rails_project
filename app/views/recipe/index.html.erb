@@ -9,7 +9,7 @@
 			</section>
 		</div>
 		<!-- Recipe content -->
-		<div class="col col-lg-8 well">	
+		<div class="col col-lg-6 well">	
 			<!-- recipe_path é mais uma boa convenção do
 			rails para evitar de se criar toda a string
 			com o caminho, adicionando assim
@@ -31,6 +31,11 @@
 				</span>
 			</p>
 		</div>
+		
+		<div class="col-md-4">
+			<%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>	
+		</div>
+	
 	</div>	
 	<hr/>	
 <% end %>	

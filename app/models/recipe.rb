@@ -38,5 +38,17 @@ validates :chef_id , presence: true
 validates :name, presence: true, length: {minumum: 5, maximum: 100}
 validates :summary, presence: true, length: {minumum: 10, maximum: 150}
 validates :description, presence: true, length: {minumum: 20, maximum: 300}
+# conveção da gem de upload de arquivos:
+mount_uploader :picture, PictureUploader
+validate :picture_size
+
+# Validation on the server side
+private
+	def picture_size
+		if picture.size > 3.megabytes
+			errors.add(:picture, "Image must be less than 3MB")
+		end
+	end
+
 
 end

@@ -6,7 +6,8 @@ o partial -->
 <div class="row">
 	<div class="well col-md-8 col-md-offset-2">
 		<!-- Atenção na form -->
-		<%= form_for @recipe , url: {action: "create"} do |f| %>
+		<!-- html fild para tratar do upload de imagens -->
+		<%= form_for(@recipe , url: {action: "create"}, html: {multipart: true}) do |f| %>
 			<%= f.label :name %>
 			<%= f.text_field :name %>
 			
@@ -17,7 +18,22 @@ o partial -->
 			<!-- rows 10 maior tamanho do textarea -->
 			<%= f.text_area :description, rows: 10 %>
 
+			<span class="picture">
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>				
+			</span>
+
 			<%= f.submit 'Save', class: "btn btn-success" %>
 		<% end %>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+	$('#recipe_picture').bind('change', function(){
+		size_in_megabytes = this.files[0].size/1024/1024;
+		if (size_in_megabytes > 3) {
+			alert('Maximun file size is 3 Mb');
+		}
+	});
+</script>
+

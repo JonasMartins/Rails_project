@@ -1,6 +1,10 @@
 
 ############################# HEROKU POSTGRES
 
+Obs: OBVIAMENTE O COMANDO: heroku rake db:migrate SÓ VAI
+FUNCIANAR APÓS O ARQUIVO MIGRATION SER CRIADO LOCALMENTE
+E DEVIDAMENTE ENVIADO AO HEROKU PELO git push heroku master
+
 Obs: Ao usar "heroku rake db:migrate", todas as tabelas são criadas normalmente
 porem ainda não consegui uma forma de escrever um seed.rb que assim
 ao executar "heroku rake db:seed" possa também passar as tupla criadas localmente
