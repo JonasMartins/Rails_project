@@ -37,3 +37,10 @@ d = Chef.create(chefname: "Real Mayer", email: "real_mayer@email.com")
 r = Recipe.create(name: "Vegetable saute", summary: "Best dish Ever", description: "Add vegetables, add oil, coock for 20 minutes", chef_id: 1)
 
 s = Recipe.create(name: "Potato Salad", summary: "Best potato Salad Ever", description: "Add mayo, add potatos, add some onions", chef_id: 2)
+
+
+Exemplo de alteração de tabela para caso de erro
+no console do heroku, ou no postgres local porém, 
+no postgres local podemos apenas usar o pgadmin...
+
+alter table recipes drop column picure;
