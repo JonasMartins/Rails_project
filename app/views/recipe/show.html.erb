@@ -26,10 +26,10 @@
 					pelo rake routes, aqui temos um like direcionado
 					a receita que está sendo acessada pelo user -->
 					<%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
-						<i class="glyphicon glyphicon-thumbs-up"></i>
-					<% end %>	&nbsp&nbsp&nbsp&nbsp  
+						<i class="glyphicon glyphicon-thumbs-up"></i> &nbsp; <%= @recipe.thumbs_up_total %>
+					<% end %>	&nbsp;&nbsp;&nbsp;&nbsp;  
 					<%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
-						<i class="glyphicon glyphicon-thumbs-down"></i>
+						<i class="glyphicon glyphicon-thumbs-down"></i> &nbsp; <%= @recipe.thumbs_down_total %>
 					<% end %>	
 				</div>
 

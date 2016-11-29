@@ -42,6 +42,16 @@ validates :description, presence: true, length: {minumum: 20, maximum: 300}
 mount_uploader :picture, PictureUploader
 validate :picture_size
 
+# calculo de likes/dislkes
+def thumbs_up_total
+	self.likes.where(like: true).size
+end
+
+def thumbs_down_total
+	self.likes.where(like: false).size
+end
+
+
 # Validation on the server side
 private
 	def picture_size
