@@ -62,7 +62,13 @@ class RecipeController < ApplicationController
     end
   end
 
+  #gerenciando o like/dislik
+  def like
+    @recipe = Recipe.find(params[:id])
+    Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+    redirect_to :back # não fazer nenhuma ação de redirecionamento na pagina
 
+  end
 
   # só assim para possibilitar a criação
   # de um novo objeto

@@ -20,6 +20,20 @@
 				<!-- Para deixar o texto da mesma forma
 				com foi digitado, com os enters e tudo mais -->
 				<%= simple_format(@recipe.description) %>
+				<!-- Like version 1 -->
+				<div class="pull-right">
+					<!-- Atenção no formato do link sempre informado
+					pelo rake routes, aqui temos um like direcionado
+					a receita que está sendo acessada pelo user -->
+					<%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+						<i class="glyphicon glyphicon-thumbs-up"></i>
+					<% end %>	&nbsp&nbsp&nbsp&nbsp  
+					<%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+						<i class="glyphicon glyphicon-thumbs-down"></i>
+					<% end %>	
+				</div>
+
+
 			</div>
 		</div>
 		<section class="col-md-8">
@@ -33,4 +47,4 @@
 			
 	</div>
 
- 
+  

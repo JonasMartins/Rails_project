@@ -9,7 +9,7 @@ class Chef < ActiveRecord::Base
 	# e em recipes adicionamos belongs_to chef....
 	# relacionamentos após a alteração da tabela
 	has_many :recipes
-
+	has_many :likes
 	before_save { self.email = email.downcase }
 
 	validates :chefname, presence: true, length:

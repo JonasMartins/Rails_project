@@ -31,7 +31,7 @@ class Recipe < ActiveRecord::Base
 # => para adicionar métodos interessantes após
 # => a criação das relações, importante ver.
 belongs_to :chef
-
+has_many :likes
 #Adicionar Origin? 
 validates :chef_id , presence: true	
 # validations

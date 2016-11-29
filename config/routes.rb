@@ -27,10 +27,13 @@ Rails.application.routes.draw do
   # delete 'recipes/:id', to: 'recipes#destroy'
 
   # Tudo isso pode ser substituido por:
-  resources :recipe
   # o rails faz tudo de forma automatica todas
   # essas funções básicas
-
+  resources :recipe do
+    member do
+      post 'like' # quando temos algo intercalado com recipe
+    end
+  end
 
   #
   # Example of regular route:
