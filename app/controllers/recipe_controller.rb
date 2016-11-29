@@ -6,7 +6,9 @@ class RecipeController < ApplicationController
   	# usando o active record, nesse caso o all
   	# onde a variavel @recipes é um array
   	# com todos os objetos desse tipo
-  	@recipes = Recipe.all
+    #
+    # Mostrando as receitas com mais likes primeiro... 
+  	@recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_total}.reverse 
   end
 
   def show
@@ -65,8 +67,14 @@ class RecipeController < ApplicationController
   #gerenciando o like/dislik
   def like
     @recipe = Recipe.find(params[:id])
-    Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+    like = Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+    if like.valid?
+      flash[:success] = "Your voting was counting!"
+    else
+      flash[:danger] = "You can only like/dislike a recipe once!"
+    end
     redirect_to :back # não fazer nenhuma ação de redirecionamento na pagina
+
 
   end
 

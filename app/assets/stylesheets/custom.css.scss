@@ -143,3 +143,11 @@ span.picture {
 .show_recipe{
 	margin: 10px 10px 10px 10px;
 }
+/* Tirar a linha que fica sublinhando o link do like/dislake */
+.without_link_underline a{
+		// color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+

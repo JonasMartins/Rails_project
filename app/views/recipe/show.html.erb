@@ -13,7 +13,7 @@
 				<%= image_tag(@recipe.picture.url, class: "gravatar") if @recipe.picture? %>
 			</div>
 
-			<div class="well">
+			<div class="well without_link_underline">
 				<p>
 					<strong>Steps:</strong>
 				</p>
@@ -26,10 +26,22 @@
 					pelo rake routes, aqui temos um like direcionado
 					a receita que está sendo acessada pelo user -->
 					<%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
-						<i class="glyphicon glyphicon-thumbs-up"></i> &nbsp; <%= @recipe.thumbs_up_total %>
-					<% end %>	&nbsp;&nbsp;&nbsp;&nbsp;  
+						<button type="button" class="btn btn-primary">
+							<span class="glyphicon glyphicon-thumbs-up"> 
+								<span class="badge">
+									<%= @recipe.thumbs_up_total %> 
+								</span>
+							</span>
+						</button>
+					<% end %>	  
 					<%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
-						<i class="glyphicon glyphicon-thumbs-down"></i> &nbsp; <%= @recipe.thumbs_down_total %>
+						<button type="button" class="btn btn-danger">
+							<span class="glyphicon glyphicon-thumbs-down"> 
+								<span class="badge">
+									<%= @recipe.thumbs_down_total %> 
+								</span>
+							</span>
+						</button>
 					<% end %>	
 				</div>
 
