@@ -55,3 +55,6 @@ gem 'mini_magick'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+
+# manege de login:
+gem 'bcrypt'

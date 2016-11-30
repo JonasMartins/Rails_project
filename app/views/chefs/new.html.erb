@@ -1,0 +1,26 @@
+<%= render 'shared/page_title', title: "Register Your Account" %>
+<!-- Passando o objeto como argumento para
+o partial -->
+<%= render 'shared/errors', obj: @chef %>
+
+<div class="row">
+	<div class="well col-md-8 col-md-offset-2">
+		<!-- Atenção na form -->
+		<%= form_for @chef , url: {action: "create"} do |f| %>
+			<%= f.label :chefname %>
+			<%= f.text_field :chefname %>
+			
+			<%= f.label :email %>
+			<%= f.email_field :email %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<!-- <span class="picture">
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>				
+			</span>
+ 			-->
+			<%= f.submit 'Create', class: "btn btn-success" %>
+		<% end %>
+	</div>
+</div>

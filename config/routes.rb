@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'chefs/index'
+
+  get 'chefs/edit'
+
   get 'recipe/index'
 
   #get 'page/home'
@@ -34,6 +38,11 @@ Rails.application.routes.draw do
       post 'like' # quando temos algo intercalado com recipe
     end
   end
+
+  # Ao invés do caminh ser novo chef, temos um nome melho no caso
+  # register, olhar no rake roues | grep chefs
+  resources :chefs, except: [:new] 
+  get '/register', to: 'chefs#new'
 
   #
   # Example of regular route:

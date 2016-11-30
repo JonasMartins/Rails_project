@@ -39,6 +39,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.5.3)
       execjs
+    bcrypt (3.1.11)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
@@ -163,6 +164,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  bcrypt
   bootstrap-sass (~> 3.2.0)
   bootstrap-will_paginate
   carrierwave (>= 1.0.0.rc, < 2.0)

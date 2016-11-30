@@ -1,0 +1,26 @@
+<%= render 'shared/page_title', title: "Edit Your Profile" %>
+<!-- Passando o objeto como argumento para
+o partial -->
+<%= render 'shared/errors', obj: @chef %>
+
+<div class="row">
+	<div class="well col-md-8 col-md-offset-2">
+		<!-- Atenção na form para update -->
+		<%= form_for(@chef, :url => chef_path(@chef) )  do |f| %>
+			<%= f.label :chefname %>
+			<%= f.text_field :chefname %>
+			
+			<%= f.label :email %>
+			<%= f.email_field :email %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+		<!-- Para um pŕoxima adição de imagem de perfil.... depois
+			<span class="picture">
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>				
+			</span> -->
+			<%= f.submit 'Save', class: "btn btn-success" %>
+		<% end %>
+	</div>
+</div>
