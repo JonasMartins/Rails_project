@@ -20,6 +20,8 @@ class Chef < ActiveRecord::Base
 	{maximum: 105},uniqueness: {case_sensitive: false}, 
 	format: {with: VALID_EMAIL_REGEX}
 
+	has_secure_password
+
 	# => Dica:
 	# => Adicionando mudanças a tabela usando comando rails:
 	# => rails generate migration add_chef_id_to_recepies
