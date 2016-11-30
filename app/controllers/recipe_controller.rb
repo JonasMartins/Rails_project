@@ -32,7 +32,6 @@ class RecipeController < ApplicationController
   	# binding.pry  	
   	# params para receber o id do objeto a ser mostrado
   	@recipe = Recipe.find(params[:id])
-
   end
 
   def new 

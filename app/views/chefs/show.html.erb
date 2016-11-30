@@ -1,0 +1,59 @@
+<%= render 'shared/page_title', title: "Chef: " + @chef.chefname %>
+<div class="row">
+	<div class="col-md-4 pull-right center">
+		<%= gravatar_for @chef, size: 200 %>
+		<hr/>			
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4 center">
+		<h3>My Recipes:</h3>
+		<%= will_paginate @recipes %>		
+	</div>
+</div>
+<% @recipes.each do |recipe| %>
+	<div class="row">
+		<div class="col col-lg-6 well col-lg-offset-3">	
+			<h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+			<p>
+				<%= recipe.summary %>
+			</p>
+			<p>
+				<span class="quiet">
+					<small>
+					Created:
+					<%=	time_ago_in_words(recipe.created_at)%> ago.
+					</small>
+				</span>
+
+				<span class="quiet pull-right">
+					<small>
+					Updated: 
+					<%=	time_ago_in_words(recipe.updated_at)%> ago.
+					</small>
+				</span>
+			</p>
+				<div class="pull-right">
+					<%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+						<button type="button" class="btn btn-primary">
+							<span class="glyphicon glyphicon-thumbs-up"> 
+								<span class="badge">
+									<%= recipe.thumbs_up_total %> 
+								</span>
+							</span>
+						</button>
+					<% end %>	  
+					<%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+						<button type="button" class="btn btn-danger">
+							<span class="glyphicon glyphicon-thumbs-down"> 
+								<span class="badge">
+									<%= recipe.thumbs_down_total %> 
+								</span>
+							</span>
+						</button>
+					<% end %>	
+				</div>
+		</div>
+	</div>
+<% end %> <!--  fim do loop com as receitas de cada chef -->
