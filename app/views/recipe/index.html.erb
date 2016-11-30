@@ -1,4 +1,9 @@
 <%= render 'shared/page_title', title: "All Recipes" %>
+
+<!-- Paginação: add isso no inicio e no final e pronto -->
+<%= will_paginate @recipes %>
+
+
 <!-- List all the recipes -->
 <% @recipes.each do |recipe| %>
 	<div class="row">
@@ -26,9 +31,18 @@
 					<small>
 					<!-- Ótima função que mostra o tempo 
 					de forma amigável  -->
+					Created:
 					<%=	time_ago_in_words(recipe.created_at)%> ago.
 					</small>
 				</span>
+
+				<span class="quiet pull-right">
+					<small>
+					Updated: 
+					<%=	time_ago_in_words(recipe.updated_at)%> ago.
+					</small>
+				</span>
+
 			</p>
 			<!-- Like version 1 -->
 				<div class="pull-right">
@@ -63,3 +77,5 @@
 	</div>	
 	<hr/>	
 <% end %>	
+
+<%= will_paginate @recipes %>

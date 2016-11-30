@@ -2,13 +2,26 @@ class RecipeController < ApplicationController
 	require 'digest/md5'
   
   def index
-  	# Variavel de instancia usada na view index, 
-  	# usando o active record, nesse caso o all
-  	# onde a variavel @recipes é um array
-  	# com todos os objetos desse tipo
-    #
-    # Mostrando as receitas com mais likes primeiro... 
-  	@recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_total}.reverse 
+=begin
+
+  	Variavel de instancia usada na view index, 
+  	usando o active record, nesse caso o all
+  	onde a variavel @recipes é um array
+  	com todos os objetos desse tipo
+    
+    
+    Mostrando as receitas com mais likes primeiro... 
+  	forma errada uma vez que mostrat muitas receitas por página 
+    pode ser muito custoso para a aplicação, usamos de forma corrta
+    o conceito de paginação com as gems : gem 'will_paginate' 
+    gem 'bootstrap-will_paginate' para facilitar.
+
+    @recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_total}.reverse 
+
+=end    
+    # 4 recipes por página:
+    @recipes = Recipe.all.paginate(page: params[:page], per_page: 4)  
+
   end
 
   def show

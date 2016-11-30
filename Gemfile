@@ -52,3 +52,6 @@ gem 'pry'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 
 gem 'mini_magick'
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

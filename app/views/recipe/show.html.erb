@@ -21,6 +21,19 @@
 				com foi digitado, com os enters e tudo mais -->
 				<%= simple_format(@recipe.description) %>
 				<!-- Like version 1 -->
+					<p>
+					<span class="quiet">
+						<small>	Created:
+						<%=	time_ago_in_words(@recipe.created_at)%> ago.
+						</small>
+					</span>
+					<span class="quiet pull-right">
+						<small> Updated: 
+						<%=	time_ago_in_words(@recipe.updated_at)%> ago.
+						</small>
+					</span>
+				</p>
+
 				<div class="pull-right">
 					<!-- Atenção no formato do link sempre informado
 					pelo rake routes, aqui temos um like direcionado

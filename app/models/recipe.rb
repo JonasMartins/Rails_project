@@ -41,6 +41,13 @@ validates :description, presence: true, length: {minumum: 20, maximum: 300}
 # conveção da gem de upload de arquivos:
 mount_uploader :picture, PictureUploader
 validate :picture_size
+# mater ordem por timestamp na apresentação do index mesmo usando o 
+# gem de paginação que não provê essa funcinalidade
+default_scope -> { order(updated_at: :desc) } # pegnado do mais novo
+# forma de fazer por quantidade de likes:
+# uma nova coluna para computar a quantidade de likes e depois especificamos
+# esta coluna aqui ao invés de updated_at
+
 
 # calculo de likes/dislkes
 def thumbs_up_total
