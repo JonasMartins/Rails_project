@@ -16,10 +16,10 @@ o partial -->
 			<%= f.label :password %>
 			<%= f.password_field :password %>
 
-			<!-- <span class="picture">
-				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>				
+			<span class="picture">
+				<%= f.file_field :profile_picture, accept: 'image/jpeg,image/gif,image/png' %>				
 			</span>
- 			-->
+ 			
 			<%= f.submit 'Create', class: "btn btn-success" %>
 		<% end %>
 	</div>

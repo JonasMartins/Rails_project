@@ -27,7 +27,7 @@ class ChefsController < ApplicationController
   	@chef = Chef.find(params[:id])
   	if @chef.update(chef_params)
   		flash[:success] = "Your profile has been updated Succesfully!"
-  		redirect_to recipe_index_path # depois mmuda para a página profile de cada chef
+  		redirect_to chef_path 
   	else
   		render 'edit'
   	end
@@ -41,7 +41,7 @@ class ChefsController < ApplicationController
 
   private 
   	def chef_params
-  		params.required(:chef).permit(:chefname, :email, :password)
+  		params.required(:chef).permit(:chefname, :email, :password, :profile_picture)
   	end
 
 end

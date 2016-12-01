@@ -22,6 +22,11 @@ class Chef < ActiveRecord::Base
 
 	has_secure_password
 
+	# conveção da gem de upload de arquivos:
+	mount_uploader :profile_picture, PictureUploader
+	validate :picture_size
+
+
 	# => Dica:
 	# => Adicionando mudanças a tabela usando comando rails:
 	# => rails generate migration add_chef_id_to_recepies
@@ -37,6 +42,17 @@ class Chef < ActiveRecord::Base
 	# => com o titulo chef_id, do tipo integer
 	# => simples!
 	# => rake db:migrate 
+	# Validation on the server side
+
+
+private
+	def picture_size
+		if profile_picture.size > 3.megabytes
+			errors.add(:profile_picture, "Image must be less than 3MB")
+		end
+	end
+
+
 
 end
  

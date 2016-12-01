@@ -1,8 +1,17 @@
-<%= render 'shared/page_title', title: "Chef: " + @chef.chefname %>
+<%= render 'shared/page_title', title: @chef.chefname %>
 <div class="row">
-	<div class="col-md-4 pull-right center">
-		<%= gravatar_for @chef, size: 200 %>
-		<hr/>			
+	<div class="col-md-2 col-sm-2 pull-right center">
+
+		<!-- <%= gravatar_for @chef, size: 200 %> -->
+		
+		<%= image_tag(@chef.profile_picture.url, 
+		class: "img-responsive img-circle", 
+		alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@chef.chefname}") if @chef.profile_picture? %>
+
+		<hr/>
+	</div>
+	<div class="col-md-4 pull-left center">
+			<%= link_to "Edit Profile", edit_chef_path(@chef) %>
 	</div>
 </div>
 
