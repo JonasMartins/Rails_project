@@ -8,11 +8,22 @@
 <!-- List all the chefs -->
 <% @chefs.each do |chef| %>
 	<div class="row">
-		<div class="col col-md-4 col-md-offset-4 center">
+		<div class="col col-md-2 col-md-offset-5 center">
 				
 			<!-- Aqui de novo vai ser substituido pela imagem 
-			de perfil -->		
+			de perfil 
 			<%=  link_to gravatar_for(chef, size: 200), chef_path(chef) %>
+			-->		
+			<!-- Se estiver logado a imagem é um link, se não apenas uma imagem __TODO: if chef.profile_picture? parece não ser necessario
+			uma vez que apenas não mostra a imagem, aqui podemos adicionar uma imagem padrão vinda da pasta imagens de asssets  -->
+			<% if logged_in? %>
+				<%= link_to ( image_tag(chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
+				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") ), chef_path(chef) %>
+			<% else %>
+				<%= image_tag( chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
+				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") if chef.profile_picture? %>
+			<% end %>
+
 			<p>
 				<h4><%= chef.chefname %></h4>
 			</p>
