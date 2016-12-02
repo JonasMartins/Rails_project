@@ -24,11 +24,19 @@
               <%= link_to "Chefs", chefs_index_path %>
             </li>
             <li>
-              <%= link_to "link1", "#" %>
+              <%= link_to "log in", login_path %>
             </li>
-            <li>
-              <%= link_to "New Recipe", new_recipe_path %>
-            </li>
+            <!-- Usando os métodos de application controller
+            também visíveis para as views 
+            isso faz com que o botão new recipe só apareca para usuários logados-->
+            <% if logged_in? %>
+              <li>
+                <%= link_to "New Recipe", new_recipe_path %>
+              </li>
+              <li>
+                <%= link_to "logout", logout_path %>
+              </li>
+            <% end %>
          </ul>
         </div>        
       </div>

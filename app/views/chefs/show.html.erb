@@ -21,7 +21,9 @@
 		<%= will_paginate @recipes %>		
 	</div>
 </div>
-<% @recipes.each do |recipe| %>
+<% @recipes.each do |recipe| %> <!-- Se eu tivesse um _form com o nome do objeto
+poderia apenas  _render @object  e o rails saberia buscar o form desse objeto e renderizar um por um
+como se fosse um loop, muito legal -->
 	<div class="row">
 		<div class="col col-lg-6 well col-lg-offset-3">	
 			<h4><%= link_to recipe.name, recipe_path(recipe) %></h4>

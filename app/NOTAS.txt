@@ -1,4 +1,9 @@
 
+## Exemplo de chef para testar entrar e sair:
+
+ainsley_harriot@email.com
+senha: 123456
+
 ############################# HEROKU POSTGRES
 
 Obs: OBVIAMENTE O COMANDO: heroku rake db:migrate SÓ VAI

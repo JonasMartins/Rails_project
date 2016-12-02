@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'logins/new'
+
   get 'chefs/index'
 
   get 'chefs/edit'
@@ -43,6 +45,19 @@ Rails.application.routes.draw do
   # register, olhar no rake roues | grep chefs
   resources :chefs, except: [:new] 
   get '/register', to: 'chefs#new'
+
+  # Creating Login/logout action routes:
+  get '/login', to: 'logins#new' 
+  post '/login', to: 'logins#create'
+  get '/logout', to: 'logins#destroy'
+
+
+
+
+
+
+
+
 
   #
   # Example of regular route:

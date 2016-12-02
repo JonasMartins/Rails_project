@@ -44,13 +44,15 @@ class RecipeController < ApplicationController
   # o objeto criado
   def create
     # strong params
+    chef = Chef.find(session[:chef_id]) if logged_in?
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.find(2)
+    @recipe.chef = Chef.find(chef.id)
 
     if @recipe.save
       # flash uma especie de notificação
       flash[:success] = "Your Recipe was created Succesfully!"
-      redirect_to recipe_index_path
+      
+      redirect_to chef_path(chef) if logged_in?
     else
       render :new
     end
@@ -97,3 +99,19 @@ class RecipeController < ApplicationController
       params.require(:recipe).permit(:name,:summary,:description,:picture)
     end
 end
+
+=begin
+Harissa Lamb Steaks with Middle Eastern Baharat & Bulgur Wheat
+A delicious roasted lamb!
+
+Step 1:
+Heat the oil in a large non-stick frying pan over a high heat. Sprinkle the lamb steaks with salt and pepper and cook, in batches, for 1-2 minutes on each side until just cooked through and tender. Put 2 lamb steaks on each plate and set aside. Keep warm.
+
+Meanwhile, prepare the grains, firmly massage the pouch to separate the grains, then cut off the top with a scissors. Heat in the microwave (category E – 850W) for 2 minutes. Stand for 1 minute, then fluff up the grains with a fork.
+
+Add the garlic and harissa to the pan that you’ve cooked the lamb in and cook for 1 minute, stirring.
+
+To Serve:
+Drizzle the lamb steaks with the harissa oil and scatter over the parsley. Divide the grains between the plates and squeeze a lemon wedge to each one to serve.
+
+=end

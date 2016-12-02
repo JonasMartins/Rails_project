@@ -8,6 +8,9 @@ class ChefsController < ApplicationController
 		@chef = Chef.create(chef_params)
 		if @chef.save
 			flash[:success] = "Your account has been created Succesfully!"
+			# indo para pagina show de chef após ter criado uma conta em register
+			session[:chef_id] = @chef.id
+			
 			redirect_to recipe_index_path
 		else
 			render 'new'

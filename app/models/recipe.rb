@@ -35,9 +35,10 @@ has_many :likes
 #Adicionar Origin? 
 validates :chef_id , presence: true	
 # validations
-validates :name, presence: true, length: {minumum: 5, maximum: 100}
+validates :name, presence: true, length: {minumum: 5, maximum: 300}
 validates :summary, presence: true, length: {minumum: 10, maximum: 150}
-validates :description, presence: true, length: {minumum: 20, maximum: 300}
+validates :description, presence: true, length: { within: 20...5000 } 
+# mode de preparo ilimitado..... OBS {is: 5} deve ser igual a 5 a entrada.....
 # conveção da gem de upload de arquivos:
 mount_uploader :picture, PictureUploader
 validate :picture_size
