@@ -1,6 +1,11 @@
 class RecipeController < ApplicationController
-	require 'digest/md5'
-  
+	before_action :set_recipe, only: [:like, :show, :edit, :update]
+  # evitar que uma nova receita seja adicionada apenas digitando o link na barra
+  before_action :require_user, except: [:show, :index] # apenas esses dois métodos não precisam de um 
+  # usuário logada para poder acessa-los : OBS: ESSE MÉTODO ESTÁ EM APPLICATION CONTROLLER POR SER MUITO RECORRENTE....
+  before_action :require_same_user, only: [:edit, :update]
+
+
   def index
 =begin
 
@@ -31,7 +36,6 @@ class RecipeController < ApplicationController
   	# na linha de comando do pry para maiores informações
   	# binding.pry  	
   	# params para receber o id do objeto a ser mostrado
-  	@recipe = Recipe.find(params[:id])
   end
 
   def new 
@@ -44,9 +48,9 @@ class RecipeController < ApplicationController
   # o objeto criado
   def create
     # strong params
-    chef = Chef.find(session[:chef_id]) if logged_in?
+    # desnecessário após os before_actions. chef = Chef.find(session[:chef_id]) if logged_in?
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.find(chef.id)
+    @recipe.chef = current_user # before_action cuida disso também....
 
     if @recipe.save
       # flash uma especie de notificação
@@ -60,14 +64,10 @@ class RecipeController < ApplicationController
 
   def edit
     # find the recipe to edit
-    @recipe = Recipe.find(params[:id])
-
-
   end
 
   def update
     # find the recipe to save
-    @recipe = Recipe.find(params[:id])
     
     if @recipe.update(recipe_params)
       flash[:success] = "Your Recipe was updated Succesfully!"
@@ -80,8 +80,7 @@ class RecipeController < ApplicationController
 
   #gerenciando o like/dislik
   def like
-    @recipe = Recipe.find(params[:id])
-    like = Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+    like = Like.create(like: params[:like], chef: current_user, recipe: @recipe) #current user curtiu. 
     if like.valid?
       flash[:success] = "Your voting was counting!"
     else
@@ -98,6 +97,19 @@ class RecipeController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:name,:summary,:description,:picture)
     end
+
+    def set_recipe
+      @recipe = Recipe.find(params[:id])
+    end
+    # a ordem do before_action é muito importante, netar que @ já é acessível a 
+    # require_same_user apenas por conta da ordem estabelecida acima 
+    def require_same_user
+      if current_user != @recipe.chef
+        flash[:danger] = "You can only edit your own profile"
+        redirect_to root_path
+      end
+    end 
+
 end
 
 =begin

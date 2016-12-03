@@ -16,14 +16,28 @@
 			-->		
 			<!-- Se estiver logado a imagem é um link, se não apenas uma imagem __TODO: if chef.profile_picture? parece não ser necessario
 			uma vez que apenas não mostra a imagem, aqui podemos adicionar uma imagem padrão vinda da pasta imagens de asssets  -->
+			 
+			<!-- HORRÍVEL!!!!! 
+
+			<% if !chef.profile_picture? %>
+				<% if logged_in? %>		
+					<%= link_to ( image_tag(image_path('user.png'), class: "img-responsive", alt: "Profile",
+					'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") ),chef_path(chef) %>
+				<% else %>
+					<%= image_tag( chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
+					'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") %>
+				<% end %>
+			<% end %>
+		 -->
 			<% if logged_in? %>
 				<%= link_to ( image_tag(chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
 				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") ), chef_path(chef) %>
 			<% else %>
 				<%= image_tag( chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") if chef.profile_picture? %>
+				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") %>		
 			<% end %>
 
+			
 			<p>
 				<h4><%= chef.chefname %></h4>
 			</p>

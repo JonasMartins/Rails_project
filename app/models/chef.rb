@@ -31,7 +31,7 @@ class Chef < ActiveRecord::Base
 	# => Adicionando mudanças a tabela usando comando rails:
 	# => rails generate migration add_chef_id_to_recepies
 	# => isso, faz com que a tabela chef seja adicionada
-	# => uma coluna chamada chef_id, que depois usamos
+	# => uma coluna chamada chef_id, que depois usamos 
 	# => para referenciar recipes
 
 

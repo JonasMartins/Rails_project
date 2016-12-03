@@ -1,14 +1,12 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 	<div class="row">
 		<div class="col-md-4 pull-right center">
-		<!-- Aqui por enquanto fica a foto do gravatar e não a foto
-		que será uma coluna na tabela e que cada chef pode altera-la
-		depois aqui adicionamos um link para voltar a pagina inicial
-		daquele chef, porem faremos isso depois para a imagem da tabela	 -->
-			<%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
-			<p>
+			<%= link_to ( image_tag(@recipe.chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
+			'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@recipe.chef.chefname}") ), chef_path(@recipe.chef) %>
+			<p class="col-md-4 pull-right center">
 				<h5>Brought to You By: <%= @recipe.chef.chefname %></h5>
 			</p>			
+		
 		</div>
 		<div class="col-md-8">
 			<h3><%= @recipe.summary %></h3>
@@ -65,16 +63,16 @@
 
 			</div>
 		</div>
-		<section class="col-md-8">
-			<div class="btn-toolbar" role="toolbar" aria-label="...">
-  		<div class="btn-group" role="group" aria-label="...">  
-      	<!-- No need this now, deprecated 
-      	<%= link_to 'Return to all recipes', recipe_index_path , class: "btn btn-default btn-space" %> -->
-      	<%= link_to 'Edit this Recipe', edit_recipe_path(@recipe) , class: "btn btn-default btn-space" %>
-		  </div>
-		</div>
-		</section>
-			
+		<% if logged_in? && @recipe.chef == current_user %> <!-- Se logado e o usuário atual
+		é o dono dessa receita ele pode ver ess botão de edição -->
+			<section class="col-md-8">
+				<div class="btn-toolbar" role="toolbar" aria-label="...">
+	  		<div class="btn-group" role="group" aria-label="...">  
+	      	<%= link_to 'Edit this Recipe', edit_recipe_path(@recipe) , class: "btn btn-default btn-space" %>
+			  </div>
+			</div>
+			</section>
+		<% end %>	
 	</div>
 
   

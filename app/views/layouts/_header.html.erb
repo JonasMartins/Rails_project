@@ -23,15 +23,23 @@
             <li>
               <%= link_to "Chefs", chefs_index_path %>
             </li>
-            <li>
-              <%= link_to "log in", login_path %>
-            </li>
+            <% if !logged_in? %>
+              <li>
+                <%= link_to "log in", login_path %>
+              </li>
+            <% end %>
             <!-- Usando os métodos de application controller
             também visíveis para as views 
             isso faz com que o botão new recipe só apareca para usuários logados-->
             <% if logged_in? %>
               <li>
-                <%= link_to "New Recipe", new_recipe_path %>
+                <%= link_to "Main", chef_path(current_user) %>                
+              </li>
+              <li>
+                <%= link_to "Edit", edit_chef_path(current_user) %>
+              </li>
+              <li>
+                <%= link_to "New Recipe", new_recipe_path %>                
               </li>
               <li>
                 <%= link_to "logout", logout_path %>
