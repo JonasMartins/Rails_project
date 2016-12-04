@@ -6,7 +6,14 @@ class PictureUploader < CarrierWave::Uploader::Base
   process resize_to_limit: [600, 600] #limite de tamanho
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+
+  # Se rails envirement is production, then, Cuidaando de salvar arquivos de imagem fora das
+  # tabelas do heroku que apaga sempre que refaz a aplicação
+  if Rails.env.production?
+    storage :fog
+  else   
+    storage :file
+  end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
