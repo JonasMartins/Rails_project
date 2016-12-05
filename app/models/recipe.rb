@@ -32,6 +32,18 @@ class Recipe < ActiveRecord::Base
 # => a criação das relações, importante ver.
 belongs_to :chef
 has_many :likes
+has_many :recipe_styles
+
+
+# many to many association:
+has_many :styles, through: :recipe_styles
+
+has_many :recipe_ingredients
+# many to many association:
+has_many :ingredients, through: :recipe_ingredients
+
+
+
 #Adicionar Origin? 
 validates :chef_id , presence: true	
 # validations

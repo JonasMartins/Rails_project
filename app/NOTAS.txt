@@ -49,3 +49,8 @@ no console do heroku, ou no postgres local porém,
 no postgres local podemos apenas usar o pgadmin...
 
 alter table recipes drop column picure;
+
+
+####################################### MANY TO MANY ASSOCIATIONS:
+
+Tudo no video 61 para explicações usando rails console
