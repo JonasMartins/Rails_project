@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'ingredients/new'
+
+  get 'ingredients/show'
+
+  get 'styles/new'
+
+  get 'styles/show'
+
   get 'logins/new'
 
   get 'chefs/index'
@@ -9,7 +17,7 @@ Rails.application.routes.draw do
 
   #get 'page/home'
 
-  resources :widgets
+  #resources :widgets
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -52,8 +60,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'logins#destroy'
 
 
-
-
+  # Ao invés de cuidar de todo o tipo de 
+  resources :styles, only:  [:new, :create, :show]
+  resources :ingredients, only:  [:new, :create, :show]
 
 
 
