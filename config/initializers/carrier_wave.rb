@@ -1,3 +1,5 @@
+=begin
+	# Mudar quando a questão do servidor amazon for resolvida, visualizar os videos 56 - 58
 if Rails.env.production?
 	CarrierWave.configure do |config|
 		config.fog_credentials = {
@@ -10,3 +12,4 @@ if Rails.env.production?
 
 	end
 end
+=end

@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20161205213134) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "chef_id"
-    t.string   "picure"
     t.string   "picture"
   end
 
