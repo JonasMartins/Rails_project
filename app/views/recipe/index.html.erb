@@ -5,7 +5,7 @@
 		<%= link_to "Recipes" , recipe_index_path %>
 	</li>
 	<li>
-		<%= link_to "Chefs", chefs_path %>
+		<%= link_to "Chefs", chefs_path %>		 
 	</li>
 </ul>
 
@@ -16,6 +16,7 @@
 
 <!-- List all the recipes -->
 <% @recipes.each do |recipe| %>
+	&nbsp; <!-- margem :) -->
 	<div class="row">
 		<div class="col col-md-2 col-sm-2">
 			<section class="center">
@@ -25,7 +26,7 @@
 			</section>
 		</div>
 		<!-- Recipe content -->
-		<div class="col col-lg-6 well">	
+		<div class="col col-lg-6 well col-md-6">	
 			<!-- recipe_path é mais uma boa convenção do
 			rails para evitar de se criar toda a string
 			com o caminho, adicionando assim
@@ -37,6 +38,9 @@
 			<p>
 				<%= recipe.summary %>
 			</p>
+			<!-- procura por um partial nessas pastas -->
+			<p><i>Styles:	<%= render recipe.styles %></i></p>
+			<p><i>Ingredients:	<%= render recipe.ingredients %></i></p>
 			<p>
 				<span class="quiet">
 					<small>
@@ -59,7 +63,8 @@
 					<!-- Atenção no formato do link sempre informado
 					pelo rake routes, aqui temos um like direcionado
 					a receita que está sendo acessada pelo user -->
-					<%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+					<%= link_to like_recipe_path(recipe, like: true),method: :post do %>
+						<!-- Se não  estiver logado o botão de like não é disponibilizado -->
 						<button type="button" class="btn btn-primary">
 							<span class="glyphicon glyphicon-thumbs-up"> 
 								<span class="badge">

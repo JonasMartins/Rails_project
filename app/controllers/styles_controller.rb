@@ -1,9 +1,13 @@
 class StylesController < ApplicationController
+  before_action :require_user, except: [:show ] # para show, não preciso de required user
+  # porem para todas as oitras ações sim
   def new
   	@style = Style.new
   end
 
   def show
+    @style = Style.find(params[:id])
+    @recipes = @style.recipes.paginate(page: params[:page], per_page: 4)
   end
 
   def create

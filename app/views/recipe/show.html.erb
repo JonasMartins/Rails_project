@@ -12,18 +12,18 @@
 			<h3><%= @recipe.summary %></h3>
 			
 			<div class="show_recipe">
-				<%= image_tag(@recipe.picture.url, class: "gravatar") if @recipe.picture? %>
+				<%= image_tag(@recipe.picture.url) if @recipe.picture? %>
 			</div>
 
-			<div class="well without_link_underline">
-				<p>
-					<strong>Steps:</strong>
-				</p>
+			<div class="well without_link_underline scroll_style">
+				<p><i>Styles:	<%= render @recipe.styles %></i></p>
+				<p><i>Ingredients:	<%= render @recipe.ingredients %></i></p>
+				<p><strong>Steps:</strong></p>
 				<!-- Para deixar o texto da mesma forma
 				com foi digitado, com os enters e tudo mais -->
 				<%= simple_format(@recipe.description) %>
 				<!-- Like version 1 -->
-					<p>
+				<p>
 					<span class="quiet">
 						<small>	Created:
 						<%=	time_ago_in_words(@recipe.created_at)%> ago.
@@ -66,11 +66,16 @@
 		<% if logged_in? && @recipe.chef == current_user %> <!-- Se logado e o usuário atual
 		é o dono dessa receita ele pode ver ess botão de edição -->
 			<section class="col-md-8">
-				<div class="btn-toolbar" role="toolbar" aria-label="...">
-	  		<div class="btn-group" role="group" aria-label="...">  
-	      	<%= link_to 'Edit this Recipe', edit_recipe_path(@recipe) , class: "btn btn-default btn-space" %>
-			  </div>
-			</div>
+				<div class="btn-group" role="group" aria-label="...">
+			  		<div class="btn-group" role="group" aria-label="...">  
+			      	<%= link_to 'Edit this Recipe', edit_recipe_path(@recipe) , class: "btn btn-default btn-space" %>
+					  </div>
+				</div>
+				<div class="btn-group" role="group" aria-label="...">
+			  		<div class="btn-group" role="group" aria-label="...">  
+			      	<%= link_to 'Delete this Recipe', recipe_path(@recipe), method: :delete,  data: {confirm: "You sure of delete this recipe?"}, class: "btn btn-default btn-space" %>
+					  </div>
+				</div>
 			</section>
 		<% end %>	
 	</div>

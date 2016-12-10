@@ -9,11 +9,18 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Se rails envirement is production, then, Cuidaando de salvar arquivos de imagem fora das
   # tabelas do heroku que apaga sempre que refaz a aplicação
+=begin
+  # depois de regularizar o servidor amazon para salvar imagens
+  
   if Rails.env.production?
     storage :fog
   else   
     storage :file
   end
+
+=end
+  storage :file # resolvendo erro heroku
+  
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

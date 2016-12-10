@@ -1,8 +1,9 @@
 class RecipeController < ApplicationController
-	before_action :set_recipe, only: [:like, :show, :edit, :update]
+	before_action :set_recipe, only: [:like, :show, :edit, :update, :destroy]
   # evitar que uma nova receita seja adicionada apenas digitando o link na barra
-  before_action :require_user, except: [:show, :index] # apenas esses dois métodos não precisam de um 
+  before_action :require_user, except: [:show, :index, :like] # apenas esses dois métodos não precisam de um 
   # usuário logada para poder acessa-los : OBS: ESSE MÉTODO ESTÁ EM APPLICATION CONTROLLER POR SER MUITO RECORRENTE....
+  before_action :require_user_like, only: [:like]
   before_action :require_same_user, only: [:edit, :update]
 
 
@@ -56,7 +57,7 @@ class RecipeController < ApplicationController
       # flash uma especie de notificação
       flash[:success] = "Your Recipe was created Succesfully!"
       
-      redirect_to chef_path(chef) if logged_in?
+      redirect_to chef_path(@recipe.chef) if logged_in?
     else
       render :new
     end
@@ -90,7 +91,14 @@ class RecipeController < ApplicationController
 
 
   end
+  
+  def destroy 
 
+    @recipe.destroy
+    flash[:success] = "Your recipe has been deleted Succesfully!"
+    redirect_to chef_path(current_user)
+  end
+  
   # só assim para possibilitar a criação
   # de um novo objeto
   private
@@ -110,6 +118,12 @@ class RecipeController < ApplicationController
       end
     end 
 
+    def require_user_like
+      if !logged_in?
+        flash[:danger] = "You Must be logged in to perform that action!"
+        redirect_to :back
+      end
+    end
 end
 
 =begin

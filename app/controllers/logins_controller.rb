@@ -17,7 +17,7 @@ class LoginsController < ApplicationController
   	# saber se o e-mail é válido:
   	if chef && chef.authenticate(params[:password]) # segurança?
   		
-  		# salvando o id do chef em session
+      # salvando o id do chef em session
   		session[:chef_id] = chef.id
   		flash[:success] = "You're logged in!"
   		redirect_to chef_path(chef) if logged_in? # redirecionando para a página perfil daquele chef

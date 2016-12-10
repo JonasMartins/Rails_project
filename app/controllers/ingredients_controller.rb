@@ -1,9 +1,13 @@
 class IngredientsController < ApplicationController
+  before_action :require_user, except: [:show ] # para show, não preciso de required user
+  # porem para todas as oitras ações sim
   def new
   	@ingredient = Ingredient.new
   end
 
   def show
+    @ingredient = Ingredient.find(params[:id])
+    @recipes = @ingredient.recipes.paginate(page: params[:page], per_page: 4)
   end
 
 

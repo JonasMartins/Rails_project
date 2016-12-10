@@ -1,20 +1,5 @@
 Rails.application.routes.draw do
-  get 'ingredients/new'
-
-  get 'ingredients/show'
-
-  get 'styles/new'
-
-  get 'styles/show'
-
-  get 'logins/new'
-
-  get 'chefs/index'
-
-  get 'chefs/edit'
-
-  get 'recipe/index'
-
+  
   #get 'page/home'
 
   #resources :widgets

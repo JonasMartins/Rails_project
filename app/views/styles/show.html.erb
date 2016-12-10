@@ -1,2 +1,95 @@
-<h1>Styles#show</h1>
-<p>Find me in app/views/styles/show.html.erb</p>
+<%= render 'shared/page_title', title: "Recipes for: " + @style.name %>
+
+<ul class="nav nav-tabs">
+	<li class="active">
+		<%= link_to "Recipes" , recipe_index_path %>
+	</li>
+	<li>
+		<%= link_to "Chefs", chefs_path %>		 
+	</li>
+</ul>
+
+
+<!-- Paginação: add isso no inicio e no final e pronto -->
+<%= will_paginate @recipes %>
+
+
+<!-- List all the recipes associados com o style listado-->
+<% @style.recipes.each do |recipe| %>
+	&nbsp; <!-- margem :) -->
+	<div class="row">
+		<div class="col col-md-2 col-sm-2">
+			<section class="center">
+			 <%= image_tag(recipe.chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
+			'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{recipe.chef.chefname}") %> 
+				<h5> Chef name: <%= recipe.chef.chefname  %></h5>					
+			</section>
+		</div>
+		<!-- Recipe content -->
+		<div class="col col-lg-6 well col-md-6">	
+			<!-- recipe_path é mais uma boa convenção do
+			rails para evitar de se criar toda a string
+			com o caminho, adicionando assim
+			ao se ultilizar o loop que passa por cada recipe
+			object vemos que o link para esse objeto já está pre
+			parado ao passar o ponteiro do mouse sobre o link
+			 -->
+			<h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+			<p>
+				<%= recipe.summary %>
+			</p>
+			<!-- procura por um partial nessas pastas -->
+			<p><i>Styles:	<%= render recipe.styles %></i></p>
+			<p><i>Ingredients:	<%= render recipe.ingredients %></i></p>
+			<p>
+				<span class="quiet">
+					<small>
+					<!-- Ótima função que mostra o tempo 
+					de forma amigável  -->
+					Created:
+					<%=	time_ago_in_words(recipe.created_at)%> ago.
+					</small>
+				</span>
+
+				<span class="quiet pull-right">
+					<small>
+					Updated: 
+					<%=	time_ago_in_words(recipe.updated_at)%> ago.
+					</small>
+				</span>
+			</p>
+			<!-- Like version 1 -->
+				<div class="pull-right">
+					<!-- Atenção no formato do link sempre informado
+					pelo rake routes, aqui temos um like direcionado
+					a receita que está sendo acessada pelo user -->
+					<%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+						<button type="button" class="btn btn-primary">
+							<span class="glyphicon glyphicon-thumbs-up"> 
+								<span class="badge">
+									<%= recipe.thumbs_up_total %> 
+								</span>
+							</span>
+						</button>
+					<% end %>	  
+					<%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+						<button type="button" class="btn btn-danger">
+							<span class="glyphicon glyphicon-thumbs-down"> 
+								<span class="badge">
+									<%= recipe.thumbs_down_total %> 
+								</span>
+							</span>
+						</button>
+					<% end %>	
+				</div>
+		</div>
+		
+		<div class="col-md-4">
+			<%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %> 	
+		</div>
+	
+	</div>	
+	<hr/>	
+<% end %>	
+
+<%= will_paginate @recipes %>

@@ -16,6 +16,7 @@
 </div>
 <!-- List all the chefs -->
 <% @chefs.each do |chef| %>
+	&nbsp; <!-- margem :) -->
 	<div class="row">
 		<div class="col col-md-2 col-md-offset-5 center">
 				
@@ -34,16 +35,16 @@
 					'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") ),chef_path(chef) %>
 				<% else %>
 					<%= image_tag( chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-					'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") %>
+					'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") %>
 				<% end %>
 			<% end %>
 		 -->
 			<% if logged_in? %>
 				<%= link_to ( image_tag(chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") ), chef_path(chef) %>
+				'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") ), chef_path(chef) %>
 			<% else %>
 				<%= image_tag( chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") %>		
+				'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") %>		
 			<% end %>
 
 

@@ -32,11 +32,16 @@ $orange-red3: #CD3700;
 	text-decoration: none;
 }
 
+
 .navbar{
   margin-bottom: -1px; /* igualando Jumbotron*/
   border-color: $orange-red3;
 }
 
+.scroll_style {
+   max-height: 300px;
+   overflow-y: scroll;
+}
 /* 
 .nav_item {
 	margin-left: 25px;
