@@ -18,6 +18,16 @@ o partial -->
 			<!-- rows 10 maior tamanho do textarea -->
 			<%= f.text_area :description, rows: 10 %>
 
+			<strong>Styles:</strong>
+			<%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |b| %>
+				<% b.label(class: "checkbox-inline"){ b.check_box(class: "checkbox") + b.text } %>
+			<% end %>
+			</br>
+			<strong>Ingredients:</strong>
+			<%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |i| %>
+				<% i.label(class: "checkbox-inline"){ i.check_box(class: "checkbox") + i.text } %>
+			<% end %>
+			 </br></br>
 			<span class="picture">
 				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>				
 			</span>
