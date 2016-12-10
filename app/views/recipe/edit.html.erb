@@ -2,9 +2,15 @@
 <!-- Passando o objeto como argumento para
 o partial -->
 <%= render 'shared/errors', obj: @recipe %>
-
 <div class="row">
-	<div class="well col-md-8 col-md-offset-2">
+	<!-- data-trigger="focus" faz com que so popover desapareca apenas clicnado fora-->
+	<section class="col-md-2 col-md-offset-10 col-sm-2 col-sm-offset-10">
+    <button type="button" class="btn btn-info glyphicon glyphicon-question-sign" data-container="body" data-toggle="popover"
+  			data-placement="bottom" data-title="Help to create new recipe" data-trigger="focus" 
+				data-content="Some text for help instructions Some text for help instructions Some text for help instructions">
+		</button>
+  </section>
+	<section class="col-md-8 well col-md-offset-2 col-sm-8 well col-sm-offset-2">
 		<!-- Atenção na form para update -->
 		<!-- html fild para tratar do upload de imagens -->
 		<%= form_for(@recipe, :url => recipe_path(@recipe), html: {multipart: true} )  do |f| %>
@@ -34,8 +40,11 @@ o partial -->
 
 			<%= f.submit 'Save', class: "btn btn-success" %>
 		<% end %>
-	</div>
+	</section>
+	
+
 </div>
+
 
 <script type="text/javascript">
 	$('#recipe_picture').bind('change', function(){

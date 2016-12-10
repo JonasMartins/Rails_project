@@ -1,14 +1,20 @@
 <%= render 'shared/page_title', title: @chef.chefname %>
 <div class="row">
-	<div class="col-md-2 col-sm-2 pull-right center">
-
-		<!-- <%= gravatar_for @chef, size: 200 %> -->
-		
+	<div class="col-md-2 col-sm-2 pull-right center">		
 		<%= image_tag(@chef.profile_picture.url, 
 		class: "img-responsive img-circle", 
 		alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@chef.chefname}") if @chef.profile_picture? %>
 
-		<hr/>
+		<%= image_tag(image_path('48/United Kingdom(Great Britain).png'), class: "img-responsive" )%>
+		<!-- Uma form melhor de procurar a bandeira correta -->
+	</div>
+	<div class="col-md-4 col-sm-2 ">		
+		<h3>Chef info</h3>
+		<ul class="list-unstyled">
+			<li>Full name: <%= @chef.chefname%></li> <!-- No caso um campo full name -->
+			<li>Birth Date: ?????</li><!-- novo campo -->
+			<li>Web Site: ?????? </li><!-- novo campo -->
+		</ul>
 	</div>
 </div>
 
@@ -18,6 +24,7 @@
 		<%= will_paginate @recipes %>		
 	</div>
 </div>
+<hr/>
 <% @recipes.each do |recipe| %> <!-- Se eu tivesse um _form com o nome do objeto
 poderia apenas  _render @object  e o rails saberia buscar o form desse objeto e renderizar um por um
 como se fosse um loop, muito legal -->
