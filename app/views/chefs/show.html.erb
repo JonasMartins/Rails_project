@@ -1,14 +1,15 @@
 <%= render 'shared/page_title', title: @chef.chefname %>
 <div class="row">
-	<div class="col-md-2 col-sm-2 pull-right center">		
+	<div class="col-md-2 col-sm-2 col-xs-2 pull-right center">		
+		<div class="thumbnail">
 		<%= image_tag(@chef.profile_picture.url, 
-		class: "img-responsive img-circle", 
+		class: "img-responsive media-object", 
 		alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@chef.chefname}") if @chef.profile_picture? %>
-
-		<%= image_tag(image_path('48/United Kingdom(Great Britain).png'), class: "img-responsive" )%>
+		<%= image_tag(image_path('48/United Kingdom(Great Britain).png'), class: "img-responsive media-object" )%>
+		</div>
 		<!-- Uma form melhor de procurar a bandeira correta -->
 	</div>
-	<div class="col-md-4 col-sm-2 ">		
+	<div class="col-md-4 col-sm-2 col-xs-2">		
 		<h3>Chef info</h3>
 		<ul class="list-unstyled">
 			<li>Full name: <%= @chef.chefname%></li> <!-- No caso um campo full name -->

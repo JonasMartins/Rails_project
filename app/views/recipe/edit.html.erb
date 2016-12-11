@@ -26,12 +26,12 @@ o partial -->
 
 			<strong>Styles:</strong>
 			<%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |b| %>
-				<% b.label(class: "checkbox-inline"){ b.check_box(class: "checkbox") + b.text } %>
+				<% b.label(class: "checkbox-inline input_checkbox"){ b.check_box(class: "checkbox") + b.text } %>
 			<% end %>
 			</br>
 			<strong>Ingredients:</strong>
 			<%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |i| %>
-				<% i.label(class: "checkbox-inline"){ i.check_box(class: "checkbox") + i.text } %>
+				<% i.label(class: "checkbox-inline input_checkbox"){ i.check_box(class: "checkbox") + i.text } %>
 			<% end %>
 			 </br></br>
 			<span class="picture">

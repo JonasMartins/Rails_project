@@ -20,37 +20,14 @@
 	<div class="row">
 		<div class="col col-md-2 col-md-offset-5 center">
 				
-			<!-- Aqui de novo vai ser substituido pela imagem 
-			de perfil 
-			<%=  link_to gravatar_for(chef, size: 200), chef_path(chef) %>
-			-->		
-			<!-- Se estiver logado a imagem é um link, se não apenas uma imagem __TODO: if chef.profile_picture? parece não ser necessario
-			uma vez que apenas não mostra a imagem, aqui podemos adicionar uma imagem padrão vinda da pasta imagens de asssets  -->
-			 
-			<!-- HORRÍVEL!!!!! 
-
-			<% if !chef.profile_picture? %>
-				<% if logged_in? %>		
-					<%= link_to ( image_tag(image_path('user.png'), class: "img-responsive", alt: "Profile",
-					'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") ),chef_path(chef) %>
-				<% else %>
-					<%= image_tag( chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-					'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") %>
-				<% end %>
-			<% end %>
-		 -->
-			<% if logged_in? %>
-				<%= link_to ( image_tag(chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
+			
+			<div class="thumbnail">
+				<%= link_to ( image_tag(chef.profile_picture.url, class: "img-responsive media-object", alt: "Profile", 
 				'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") ), chef_path(chef) %>
-			<% else %>
-				<%= image_tag( chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-				'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") %>		
-			<% end %>
+				<br />
+				<strong><%= chef.chefname %></strong>
+			</div>
 
-
-			<p>
-				<h4><%= chef.chefname %></h4>
-			</p>
 		</div>
 	</div>
 <% end %>	

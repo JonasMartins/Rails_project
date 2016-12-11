@@ -62,18 +62,10 @@
             também visíveis para as views 
             isso faz com que o botão new recipe só apareca para usuários logados-->
             <% if logged_in? %>
-              <li>
-                <%= link_to "Main", chef_path(current_user) %>                
-              </li>
-              <li>
-                <%= link_to "Edit", edit_chef_path(current_user) %>
-              </li>
-              <li>
-                <%= link_to "New Recipe", new_recipe_path %>                
-              </li>
-              <li>
-                <%= link_to "logout", logout_path %>
-              </li>
+              <li><%= link_to "Main", chef_path(current_user) %></li>
+              <li><%= link_to "Edit", edit_chef_path(current_user) %></li>
+              <li><%= link_to "New Recipe", new_recipe_path %></li>
+              <li><%= link_to "logout", logout_path %></li>
             <% end %>
          </ul>
         </div>        

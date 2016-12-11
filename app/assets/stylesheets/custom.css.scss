@@ -134,6 +134,10 @@ input, textarea, select, .uneditable-input {
 	margin-bottom: 15px;
 
 } 
+.input_checkbox input {
+	width: auto !important;
+}
+
 .input {
 	height: auto !important;
 }
@@ -162,6 +166,4 @@ span.picture {
 		// color: #FFFFFF;
     text-decoration: none;
 }
-
-
 

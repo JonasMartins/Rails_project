@@ -38,9 +38,13 @@
 			<p>
 				<%= recipe.summary %>
 			</p>
-			<!-- procura por um partial nessas pastas -->
-			<p><i>Styles:	<%= render recipe.styles %></i></p>
-			<p><i>Ingredients:	<%= render recipe.ingredients %></i></p>
+			<% if recipe.styles.any? %>
+					<!-- procura por um partial nessas pastas -->
+					<p><i>Styles:	<%= render recipe.styles %></i></p>
+				<% end %>
+				<% if recipe.ingredients.any? %>
+					<p><i>Ingredients:	<%= render recipe.ingredients %></i></p>
+				<% end %>
 			<p>
 				<span class="quiet">
 					<small>
