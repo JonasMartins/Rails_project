@@ -2,10 +2,11 @@
 <div class="row">
 	<div class="col-md-2 col-sm-2 col-xs-2 pull-right center">		
 		<div class="thumbnail">
+		<!-- caso ocorra algum problema com o caminho da imagem, basta salvar antes -->
 		<%= image_tag(@chef.profile_picture.url, 
 		class: "img-responsive media-object", 
 		alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@chef.chefname}") if @chef.profile_picture? %>
-		<%= image_tag(image_path('48/United Kingdom(Great Britain).png'), class: "img-responsive media-object" )%>
+		<%= image_tag(image_path(@chef.country), class: "img-responsive media-object" )%>
 		</div>
 		<!-- Uma form melhor de procurar a bandeira correta -->
 	</div>
@@ -13,7 +14,9 @@
 		<h3>Chef info</h3>
 		<ul class="list-unstyled">
 			<li>Full name: <%= @chef.full_name%></li> <!-- No caso um campo full name -->
-			<li>Country: <%= @chef.country%></li><!-- novo campo -->
+			<% @chef.country = @chef.country[3...-4] %><!-- limpando a string tirando os 4 ultimos e os 3 primeiros para deixar apenas o
+			nome do país -->
+			<li>Country: <%= @chef.country %></li>
 			<li>Web Site: <%= link_to @chef.web_site, @chef.web_site , :target => "_blank" %> </li><!-- novo campo -->
 		</ul>
 	</div>

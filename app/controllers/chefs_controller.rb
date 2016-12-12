@@ -1,12 +1,14 @@
 class ChefsController < ApplicationController
+  include ChefsHelper
 	#antes de qualquer ação aqui dentro, executar esses métodos
 	before_action :set_chef, only: [:edit, :update, :show]
 	before_action :require_same_user, only: [:edit, :update] # apenas edit e update precisão do retorno true dessa ação
-	# para poder serem executadas
+  # para poder serem executadas
 
 	def new
 		@chef = Chef.new
-	end
+	  @countries = ChefsHelper::get_countries
+  end
 
 	def create
 		@chef = Chef.create(chef_params)
@@ -26,6 +28,7 @@ class ChefsController < ApplicationController
   end
 
   def edit
+    @countries = ChefsHelper::get_countries
   end
 
   def update
@@ -41,7 +44,6 @@ class ChefsController < ApplicationController
   	@recipes = @chef.recipes.paginate(page: params[:page], per_page: 3)
   end
 
-
   private 
   	def chef_params
   		params.required(:chef).permit(:chefname, :email, :password, :profile_picture, :full_name, :country, :web_site)
@@ -56,4 +58,5 @@ class ChefsController < ApplicationController
   			redirect_to root_path
   		end
   	end	
+
 end

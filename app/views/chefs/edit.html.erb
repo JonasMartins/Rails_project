@@ -17,7 +17,7 @@ o partial -->
 			<%= f.text_field :web_site %>
 			
 			<%= f.label :country %>
-			<%= f.text_field :country %>
+			<%= f.select :country, @countries.each{|key|}, include_blank: false %>
 
 			<%= f.label :email %>
 			<%= f.email_field :email %>
