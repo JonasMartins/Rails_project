@@ -12,9 +12,9 @@
 	<div class="col-md-4 col-sm-2 col-xs-2">		
 		<h3>Chef info</h3>
 		<ul class="list-unstyled">
-			<li>Full name: <%= @chef.chefname%></li> <!-- No caso um campo full name -->
-			<li>Birth Date: ?????</li><!-- novo campo -->
-			<li>Web Site: ?????? </li><!-- novo campo -->
+			<li>Full name: <%= @chef.full_name%></li> <!-- No caso um campo full name -->
+			<li>Country: <%= @chef.country%></li><!-- novo campo -->
+			<li>Web Site: <%= link_to @chef.web_site, @chef.web_site , :target => "_blank" %> </li><!-- novo campo -->
 		</ul>
 	</div>
 </div>

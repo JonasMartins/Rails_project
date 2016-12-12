@@ -9,7 +9,16 @@ o partial -->
 		<%= form_for @chef , url: {action: "create"} do |f| %>
 			<%= f.label :chefname %>
 			<%= f.text_field :chefname %>
+
+			<%= f.label :full_name %>
+			<%= f.text_field :full_name %>
+
+			<%= f.label :web_site %>
+			<%= f.text_field :web_site %>
 			
+			<%= f.label :country %>
+			<%= f.text_field :country %>
+
 			<%= f.label :email %>
 			<%= f.email_field :email %>
 
