@@ -21,7 +21,7 @@
 		<div class="col col-md-2 col-sm-2">
 			<section class="center">
 			 <%= image_tag(recipe.chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-			'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{recipe.chef.chefname}") %> 
+			'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{recipe.chef.chefname}") if recipe.chef.profile_picture? %> 
 				<h5> Chef name: <%= recipe.chef.chefname  %></h5>					
 			</section>
 		</div>
