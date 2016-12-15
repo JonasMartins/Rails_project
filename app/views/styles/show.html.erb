@@ -18,15 +18,17 @@
 <% @style.recipes.each do |recipe| %>
 	&nbsp; <!-- margem :) -->
 	<div class="row">
-		<div class="col col-md-2 col-sm-2">
-			<section class="center">
+		<div class="col col-md-2 col-sm-2 col-xs-2">
+			<% if recipe.chef %><!-- Resolvido? sem quebrar no heroku -->
+			<section class="center"><!-- Erro aqui chef fica sendo nulo -->
 			 <%= image_tag(recipe.chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
 			'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{recipe.chef.chefname}") %> 
 				<h5> Chef name: <%= recipe.chef.chefname  %></h5>					
 			</section>
+			<% end %>
 		</div>
 		<!-- Recipe content -->
-		<div class="col col-lg-6 well col-md-6">	
+		<div class="col col-lg-6 well col-md-6 col-xs-6">	
 			<!-- recipe_path é mais uma boa convenção do
 			rails para evitar de se criar toda a string
 			com o caminho, adicionando assim
@@ -38,9 +40,13 @@
 			<p>
 				<%= recipe.summary %>
 			</p>
-			<!-- procura por um partial nessas pastas -->
-			<p><i>Styles:	<%= render recipe.styles %></i></p>
-			<p><i>Ingredients:	<%= render recipe.ingredients %></i></p>
+			<% if recipe.styles.any? %>
+					<!-- procura por um partial nessas pastas -->
+					<p><i>Styles:	<%= render recipe.styles %></i></p>
+				<% end %>
+				<% if recipe.ingredients.any? %>
+					<p><i>Ingredients:	<%= render recipe.ingredients %></i></p>
+				<% end %>
 			<p>
 				<span class="quiet">
 					<small>
@@ -63,7 +69,8 @@
 					<!-- Atenção no formato do link sempre informado
 					pelo rake routes, aqui temos um like direcionado
 					a receita que está sendo acessada pelo user -->
-					<%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+					<%= link_to like_recipe_path(recipe, like: true),method: :post do %>
+						<!-- Se não  estiver logado o botão de like não é disponibilizado -->
 						<button type="button" class="btn btn-primary">
 							<span class="glyphicon glyphicon-thumbs-up"> 
 								<span class="badge">
@@ -84,12 +91,13 @@
 				</div>
 		</div>
 		
-		<div class="col-md-4">
-			<%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %> 	
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<%= image_tag(recipe.picture.url, class: "img-responsive" ) if recipe.picture? %> 	
 		</div>
 	
 	</div>	
 	<hr/>	
 <% end %>	
+
 
 <%= will_paginate @recipes %>

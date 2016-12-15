@@ -18,15 +18,17 @@
 <% @recipes.each do |recipe| %>
 	&nbsp; <!-- margem :) -->
 	<div class="row">
-		<div class="col col-md-2 col-sm-2">
-			<section class="center">
+		<div class="col col-md-2 col-sm-2 col-xs-2">
+			<% if recipe.chef %><!-- Resolvido? sem quebrar no heroku -->
+			<section class="center"><!-- Erro aqui chef fica sendo nulo -->
 			 <%= image_tag(recipe.chef.profile_picture.url, class: "img-responsive", alt: "Profile", 
-			'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{recipe.chef.chefname}") if recipe.chef.profile_picture? %> 
+			'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{recipe.chef.chefname}") %> 
 				<h5> Chef name: <%= recipe.chef.chefname  %></h5>					
 			</section>
+			<% end %>
 		</div>
 		<!-- Recipe content -->
-		<div class="col col-lg-6 well col-md-6">	
+		<div class="col col-lg-6 well col-md-6 col-xs-6">	
 			<!-- recipe_path é mais uma boa convenção do
 			rails para evitar de se criar toda a string
 			com o caminho, adicionando assim
@@ -89,8 +91,8 @@
 				</div>
 		</div>
 		
-		<div class="col-md-4">
-			<%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %> 	
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<%= image_tag(recipe.picture.url, class: "img-responsive" ) if recipe.picture? %> 	
 		</div>
 	
 	</div>	

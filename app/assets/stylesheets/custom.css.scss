@@ -70,9 +70,15 @@ h2{
 	color: #777; 
 }
 
+.jumbotron>h1{
+	color: white;
+	text-shadow: 4px 4px #000000;
+}
 .jumbotron>h2{
 	color: white;
+	text-decoration: bold;
 }
+
 .left {
 	text-align: left;
 	letter-spacing: .5px;
@@ -81,6 +87,7 @@ h2{
 .footer {
 	margin-top: 25px;
 	border-top: 1px solid black; 
+	text-align: center;
 }
 .btn-warning {/* preguiça... */
 	background: $orange-red3;
@@ -103,6 +110,22 @@ h2{
 		color: black;
 		font-style: bold;
 	} 
+}
+/* Ao clicar no link do navbar deixa-lo preto, da mesma forma que o hover acima 
+ não deu certo.... apenas js para conseguir? */
+.navbar-nav > .open > .a , .navbar-default .navbar-nav > .open > a.focus {
+	color: black;
+}
+
+.dropdown-menu {
+	background-color: $orange-red3;
+}
+.dropdown-menu > li > a{
+	color: white;
+	&:hover{
+		background: darken($orange-red3, 5%);
+		border-color: darken($orange-red3, 5%);
+	}
 }
 
 body {

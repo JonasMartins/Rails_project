@@ -7,7 +7,10 @@ $yellow2: #EEEE00;
 $forest-green: #228B22;
 
 .jumbotron {
-  background: $orange-red3;
+  
+  /*  background: $orange-red3; */
+  background-image: image-url('butter-chicken.jpg'); /* forma correta de usar uma imagem para um background dentro de um css */
+  background-position: center center;
   color: white;
   padding-bottom: 80px;
 
