@@ -84,17 +84,22 @@
 				</div>
 			</section>
 		<% end %>	
-	<!-- #TODO Habilitar função de comentarios aqui.... -->
-	<section class="col-md-8 col-sm-8 col-xs-8">
-		<!-- ver os comentarios daquele recipe-->	
-		<!-- Sem contar com as respostas dadas ainda.......    -->
-		<h3>Comments for this recipe: ( <%= Comment.where(commentable_id: @recipe.id ).count %> ) </h3>
-	
-	 	<ul class="list-unstyled">
-  		<%= render(partial: 'comments/comment', collection: @recipe.comments) %>
-		</ul>
 
-	<!-- adicionar comentario -->
+	<div class="col-md-8 col-sm-8 col-xs-8">
+		<h3> <%= link_to 'Comments', "#", id: "comments-link" %> ( <%= Comment.where(commentable_id: @recipe.id ).count %> ) </h3>
+		<a href="#" onclick="paintIt(this, '#990000')" >Paint it red</a>
+	</div>
+
+	<br />
+
+	<section class="col-md-8 col-sm-8 col-xs-8" id="comments-section">
+		<!-- ver os comentarios daquele recipe-->	
+		<!-- Sem contar com as respostas dadas ainda.......    -->	
+	 	<ol class="list-unstyled", id="comments">
+  		<%= render(partial: 'comments/comment', collection: @recipe.comments) %>
+		</ol>
+
+	<!-- <a href=""></a>dicionar comentario -->
 		<br />
 		<% if logged_in? %>
 			<%= form_for [@recipe, Comment.new ] do |f| %>
@@ -106,5 +111,5 @@
 			<% end %><!-- end form -->
 		<% end %><!-- end if -->
 	</section>
- 
  </div>
+

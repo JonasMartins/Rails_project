@@ -41,6 +41,8 @@ gem 'puma'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'jquery-turbolinks'
+
 
 # Bootstrap -> locally
 gem 'bootstrap-sass', '~> 3.2.0'

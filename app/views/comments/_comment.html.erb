@@ -6,9 +6,9 @@ quando clicar em um link por exemplo assim fica mostrando constantemente
 
 <li>
 	<div class="well">
-		<small><i>Chef <%= link_to comment.chef.chefname, chef_path(comment.chef), :target => "_blank" %>
-			Said at: <%= time_ago_in_words(comment.created_at) %> ago:
-		</i></small>
+		<i>Chef <%= link_to comment.chef.chefname, chef_path(comment.chef), :target => "_blank" %>
+			Said at: <span class="date"> <%= time_ago_in_words(comment.created_at) %></span> ago:
+		</i>
 		<p><%= comment.body %></p>
 			<small class="pull-right"><%= comment.id %></small>
 	</div>
@@ -18,25 +18,7 @@ quando clicar em um link por exemplo assim fica mostrando constantemente
       <%= f.text_area :body, placeholder: "Add a Reply", :id => "auto-enter" %>
   	<% end %>
 	<% end %>
-	<ul class="list-unstyled">
+	<ol class="list-unstyled", id="comments">
 	    <%= render partial: 'comments/comment', collection: comment.comments %>
-	</ul>
-
-
+	</ol>
 </li>
-<!-- enter para submeter a reposta -->
-<script type="text/javascript">
-	$(function() {
-		$('#auto-enter').keypress(function(e){
-			 if( e.which && e.which == 13 (e.keyCode && e.keyCode == 13) ){
-		      $('button[type=submit] .default').click();
-            	return false;
-       		 	} else {
-          	  return true;
-		     	 	}
-		  	});
-		});
-	
-
-</script>
-
