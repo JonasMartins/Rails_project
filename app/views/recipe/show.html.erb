@@ -87,12 +87,12 @@
 	<!-- #TODO Habilitar função de comentarios aqui.... -->
 	<section class="col-md-8 col-sm-8 col-xs-8">
 		<!-- ver os comentarios daquele recipe-->	
-		<h3>Comments for this recipe:</h3>
+		<!-- Sem contar com as respostas dadas ainda.......    -->
+		<h3>Comments for this recipe: ( <%= Comment.where(commentable_id: @recipe.id ).count %> ) </h3>
 	
-	 <ul class="list-unstyled">
-  	<%= render(partial: 'comments/comment', collection: @recipe.comments) %>
-	</ul>
-
+	 	<ul class="list-unstyled">
+  		<%= render(partial: 'comments/comment', collection: @recipe.comments) %>
+		</ul>
 
 	<!-- adicionar comentario -->
 		<br />

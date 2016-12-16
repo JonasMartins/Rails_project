@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = @commentable.comments.new comment_params
+
+		# Isso é segguro pois, jamais aparecerá as opções de comentar se o 
+		# usuário não estiver logado..... 
+		@comment.chef_id = current_user.id
+
 		if @comment.save 
       redirect_to :back, notice: 'Your comment was successfully posted!'
     else
@@ -42,6 +47,9 @@ class CommentsController < ApplicationController
       @commentable = Recipe.find_by_id(params[:recipe_id]) if params[:recipe_id]
     end
 
+    def find_author_comment
+
+    end
 
     def require_user_like
       if !logged_in?
