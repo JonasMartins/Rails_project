@@ -84,6 +84,27 @@
 				</div>
 			</section>
 		<% end %>	
-	</div>
+	<!-- #TODO Habilitar função de comentarios aqui.... -->
+	<section class="col-md-8 col-sm-8 col-xs-8">
+		<!-- ver os comentarios daquele recipe-->	
+		<h3>Comments for this recipe:</h3>
+	
+	 <ul class="list-unstyled">
+  	<%= render(partial: 'comments/comment', collection: @recipe.comments) %>
+	</ul>
 
-  
+
+	<!-- adicionar comentario -->
+		<br />
+		<% if logged_in? %>
+			<%= form_for [@recipe, Comment.new ] do |f| %>
+				<strong>Share a Comment:</strong>
+				<%= f.text_area :body, rows: 3, placeholder: "Add a comment" %>
+				<div class="col col-md-2 col-sm-2 col-xs-2 pull-right">
+					<%= f.submit 'Share', class: "btn btn-xs btn-success" %>
+				</div>
+			<% end %><!-- end form -->
+		<% end %><!-- end if -->
+	</section>
+ 
+ </div>

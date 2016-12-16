@@ -10,6 +10,8 @@ class Chef < ActiveRecord::Base
 	# relacionamentos após a alteração da tabela
 	has_many :recipes
 	has_many :likes
+	has_many :comments
+	
 	before_save { self.email = email.downcase }
 
 	validates :chefname, presence: true, length:

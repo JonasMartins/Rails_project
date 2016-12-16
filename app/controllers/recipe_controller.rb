@@ -37,6 +37,8 @@ class RecipeController < ApplicationController
   	# na linha de comando do pry para maiores informações
   	# binding.pry  	
   	# params para receber o id do objeto a ser mostrado
+   # @comment = Comment.new
+   # @comments = Comment.where(:recipe_id => Recipe.find(params[:id]))
   end
 
   def new 

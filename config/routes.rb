@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'comments/show'
+
+  get 'comments/edit'
+
   #get 'page/home'
 
   #resources :widgets
@@ -29,14 +33,21 @@ Rails.application.routes.draw do
   # o rails faz tudo de forma automatica todas
   # essas funções básicas
   resources :recipe do
+    resources :comments # right way
+
     member do
       post 'like' # quando temos algo intercalado com recipe
     end
   end
 
+  resources :comments do
+    resources :comments
+  end
+
+
   # Ao invés do caminh ser novo chef, temos um nome melho no caso
   # register, olhar no rake roues | grep chefs
-  resources :chefs, except: [:new] 
+  resources :chefs, except: [:new]
   get '/register', to: 'chefs#new'
 
   # Creating Login/logout action routes:

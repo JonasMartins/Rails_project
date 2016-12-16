@@ -1,0 +1,21 @@
+<!-- #TODO aqui tem que entrar um toggle, no caso, mostrar o reply apenas
+quando clicar em um link por exemplo assim fica mostrando constantemente-->
+
+<li>
+	<div class="well">
+		<small><i>Chef <%= link_to comment.chef.chefname, chef_path(comment.chef), :target => "_blank" %> 
+			Said at: <%= time_ago_in_words(comment.created_at) %> ago:
+		</i></small>
+		<p><%= comment.body %></p>
+	</div>
+	<% if logged_in? %>
+		<%= form_for [comment, Comment.new] do |f| %>
+      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+      <%= f.submit "Reply"  %>
+  	<% end %>
+	<% end %>
+	<ul class="list-unstyled">
+	    <%= render partial: 'comments/comment', collection: comment.comments %>
+	</ul>
+
+</li>
