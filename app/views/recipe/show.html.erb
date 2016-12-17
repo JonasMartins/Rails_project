@@ -85,31 +85,91 @@
 			</section>
 		<% end %>	
 
-	<div class="col-md-8 col-sm-8 col-xs-8">
-		<h3> <%= link_to 'Comments', "#", id: "comments-link" %> ( <%= Comment.where(commentable_id: @recipe.id ).count %> ) </h3>
-		<a href="#" onclick="paintIt(this, '#990000')" >Paint it red</a>
-	</div>
 
-	<br />
+		<div class="col-md-8 col-sm-8 col-xs-8">
+			<button class="btn btn-info", id="comment-toggle">Comments ( <%= Comment.where(commentable_id: @recipe.id ).count %> ) </button>
+		</div>
 
-	<section class="col-md-8 col-sm-8 col-xs-8" id="comments-section">
+
+	<section id="comments-section", class="col-md-8 col-sm-8 col-xs-8">
 		<!-- ver os comentarios daquele recipe-->	
 		<!-- Sem contar com as respostas dadas ainda.......    -->	
-	 	<ol class="list-unstyled", id="comments">
+	 	<ol id='comments', class="list-unstyled">
   		<%= render(partial: 'comments/comment', collection: @recipe.comments) %>
 		</ol>
-
-	<!-- <a href=""></a>dicionar comentario -->
+		<!-- <a href=""></a>dicionar comentario -->
 		<br />
-		<% if logged_in? %>
-			<%= form_for [@recipe, Comment.new ] do |f| %>
-				<strong>Share a Comment:</strong>
-				<%= f.text_area :body, rows: 3, placeholder: "Add a comment" %>
-				<div class="col col-md-2 col-sm-2 col-xs-2 pull-right">
-					<%= f.submit 'Share', class: "btn btn-xs btn-success" %>
-				</div>
-			<% end %><!-- end form -->
-		<% end %><!-- end if -->
-	</section>
+			<% if logged_in? %>
+
+			
+			<!-- Ajax  remote: true-->
+				<%= form_for [@recipe, Comment.new ], remote: true do |f| %>
+					<fieldset>
+							<strong>Share a Comment:</strong>
+							<%= f.text_area :body, rows: 3, placeholder: "Add a comment" %>
+							<div class="col col-md-2 col-sm-2 col-xs-2 pull-right">
+								<%= f.submit 'Share', class: "btn btn-xs btn-success" %>
+							</div>
+						</fieldset>
+		
+
+
+					<% end %><!-- end form -->
+				<% end %><!-- end if -->
+		</section>
  </div>
+<!-- 
+<p><button id="in">fadeIn()</button>
+<button id="out">fadeOut()</button>
+<button id="to">fadeTo()</button></p>
+ -->
+
+
+
+<!--  
+	<div id="test"></div>
+-->
+
+<script type="text/javascript">
+	var a = $( "#comments-section" );
+
+	$( "#comments-link" ).click(function() {
+	  a.fadeOut(1000, function() {
+		 });
+		});
+
+	var test = $('#test'),
+    $in = $('#in'),
+    out = $('#out'),
+    toggle = $('#comment-toggle'),
+    to = $('#to');
+
+		$in.click(function() {
+		    a.fadeIn(1000, function() {
+		        
+		    });
+		});
+		    
+		    
+		out.click(function() {
+		    a.fadeOut(1000, function() {
+		        
+		    });
+		});
+
+
+		toggle.click(function() {
+		    a.fadeToggle(500, function() {
+		        $('#comment_body').focus()
+		    });
+		});
+
+		to.click(function() {
+		    test.fadeTo(1000, 0.5, function() {
+		    });
+		});
+
+
+
+</script>
 

@@ -1,0 +1,8 @@
+/* escrever js para ser ultilizado ao executar a ação enviada pelo user para 
+ o servidor, notar que em create do controller comments ele chama, esse arquivo 
+ para ser gerado ao invés de executar um html */
+ $("#comments").append("<%= j render @comment %>");
+
+ /* como já temos um arquivo para renderizar cada comentario separadamente, podemos
+ apenas renderiza-lo aqui dessa forma ao clicar no botão create, esse j tem função
+ de "scape" qualquer html que venha de volta , j é um método javascript dar uma olhada depois */

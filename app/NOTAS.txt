@@ -54,3 +54,31 @@ alter table recipes drop column picure;
 ####################################### MANY TO MANY ASSOCIATIONS:
 
 Tudo no video 61 para explicações usando rails console
+
+
+
+
+
+comntarios de comentarios:
+
+<!-- #TODO aqui tem que entrar um toggle, no caso, mostrar o reply apenas
+quando clicar em um link por exemplo assim fica mostrando constantemente
+
+-->
+
+<li>
+	<div class="well">
+		<i>Chef <%= link_to comment.chef.chefname, chef_path(comment.chef), :target => "_blank" %>
+			Said at: <span class="date"> <%= time_ago_in_words(comment.created_at) %></span> ago:
+		</i>
+		<p><%= comment.body %></p>
+			<small class="pull-right"><%= comment.id %></small>
+	</div>	
+			<%= form_for [@comment, Comment.new], remote: true do |f| %>
+	      <%= f.text_area :body, rows: 3, placeholder: "Add a Reply" %>
+				<%= f.submit 'Reply', class: "btn btn-xs btn-success" %>
+	  	<% end %>
+		<ol class="list-unstyled", id='comments'>
+		    <%= render partial: 'comments/comment', collection: @comment.comments %>
+		</ol>
+</li>

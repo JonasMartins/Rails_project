@@ -1,7 +1,6 @@
 <!-- #TODO aqui tem que entrar um toggle, no caso, mostrar o reply apenas
 quando clicar em um link por exemplo assim fica mostrando constantemente
 
-
 -->
 
 <li>
@@ -11,14 +10,5 @@ quando clicar em um link por exemplo assim fica mostrando constantemente
 		</i>
 		<p><%= comment.body %></p>
 			<small class="pull-right"><%= comment.id %></small>
-	</div>
-	
-	<% if logged_in? %>
-		<%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply", :id => "auto-enter" %>
-  	<% end %>
-	<% end %>
-	<ol class="list-unstyled", id="comments">
-	    <%= render partial: 'comments/comment', collection: comment.comments %>
-	</ol>
+	</div>	
 </li>

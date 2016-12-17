@@ -5,7 +5,8 @@
 #comments-section {
 	display :none; /* isso vai esconder por padrão a area de comentarios */
 }
-
+#comments-link{
+}
 
 ol#comments {
 	font-size: 1em;
@@ -25,4 +26,12 @@ ol#comments {
 		}
 
 	}
+}
+
+/* quadrado de test */
+#test {
+    margin: 1.5em auto;
+    width: 10em;
+    height: 10em;
+    background: gray;
 }

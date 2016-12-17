@@ -13,12 +13,20 @@ class CommentsController < ApplicationController
 		# Isso é segguro pois, jamais aparecerá as opções de comentar se o 
 		# usuário não estiver logado..... 
 		@comment.chef_id = current_user.id
+		
+		# ajax
+		@comment.save!
 
-		if @comment.save 
-      redirect_to :back, notice: 'Your comment was successfully posted!'
-    else
-      redirect_to :back, notice: "Your comment wasn't posted!"
-    end
+		respond_to do |format|
+			format.html { redirect_to :back } # se o cliente quiser html, esse bloco é executado
+			format.js # render comments/create.js.erb (mesmo nome da ação)
+		end
+
+	# if @comment.save 
+  #     redirect_to :back, notice: 'Your comment was successfully posted!'
+  #   else
+  #     redirect_to :back, notice: "Your comment wasn't posted!"
+  #   end
 	end
 
   def show
