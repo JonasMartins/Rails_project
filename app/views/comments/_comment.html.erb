@@ -2,13 +2,12 @@
 quando clicar em um link por exemplo assim fica mostrando constantemente
 
 -->
-
 <li>
 	<div class="well">
-		<i>Chef <%= link_to comment.chef.chefname, chef_path(comment.chef), :target => "_blank" %>
+		<i>Chef <%= link_to comment.chef.chefname, chef_path(comment.chef), :target => "_blank",
+		'data-toggle' => 'tooltip', 'data-placement' => 'top', title: " Visit Chef #{comment.chef.chefname} profile"%>
 			Said at: <span class="date"> <%= time_ago_in_words(comment.created_at) %></span> ago:
 		</i>
 		<p><%= comment.body %></p>
-			<small class="pull-right"><%= comment.id %></small>
 	</div>	
 </li>

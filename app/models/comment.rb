@@ -1,6 +1,5 @@
 class Comment < ActiveRecord::Base
 
-
 	belongs_to :chef
 	belongs_to :commentable, polymorphic: true # poliformic ao inves de recipes
 	has_many :comments, as: :commentable # comentarios para comentarios

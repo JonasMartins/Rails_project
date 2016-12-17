@@ -21,7 +21,7 @@
 		<div class="col col-md-2 col-md-offset-5 center">
 			<div class="thumbnail">
 				<%= link_to ( image_tag(chef.profile_picture.url, class: "img-responsive media-object", alt: "Profile", 
-				'data-toggle' => 'tooltip', 'data-placement' => 'right', title: "#{chef.chefname}") ), chef_path(chef) %>
+				'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{chef.chefname}") ), chef_path(chef) %>
 				<br />
 				<strong><%= chef.chefname %></strong>
 			</div>

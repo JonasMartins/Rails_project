@@ -22,7 +22,7 @@
 					<p><i>Styles:	<%= render @recipe.styles %></i></p>
 				<% end %>
 				<% if @recipe.ingredients.any? %>
-					<p><i>Ingredients:	<%= render @recipe.ingredients %></i></p>
+					<p><i>Ingredients:	<%= render @recipe.ingredients%></i></p>
 				<% end %>
 				<p><strong>Steps:</strong></p>
 				<!-- Para deixar o texto da mesma forma
@@ -85,11 +85,11 @@
 			</section>
 		<% end %>	
 
-
 		<div class="col-md-8 col-sm-8 col-xs-8">
-			<button class="btn btn-info", id="comment-toggle">Comments ( <%= Comment.where(commentable_id: @recipe.id ).count %> ) </button>
+			<br />
+			<br />
+			<button class="btn btn-primary", id="comment-toggle">Comments ( <%= Comment.where(commentable_id: @recipe.id ).count %> ) </button>
 		</div>
-
 
 	<section id="comments-section", class="col-md-8 col-sm-8 col-xs-8">
 		<!-- ver os comentarios daquele recipe-->	
@@ -97,11 +97,8 @@
 	 	<ol id='comments', class="list-unstyled">
   		<%= render(partial: 'comments/comment', collection: @recipe.comments) %>
 		</ol>
-		<!-- <a href=""></a>dicionar comentario -->
 		<br />
 			<% if logged_in? %>
-
-			
 			<!-- Ajax  remote: true-->
 				<%= form_for [@recipe, Comment.new ], remote: true do |f| %>
 					<fieldset>
@@ -117,6 +114,8 @@
 					<% end %><!-- end form -->
 				<% end %><!-- end if -->
 		</section>
+ <br />
+ <br />
  </div>
 <!-- 
 <p><button id="in">fadeIn()</button>
